@@ -1,0 +1,4 @@
+com/example/stressapp/BuildConfig.java
+ com.example.stressapp.BuildConfig
+com/example/stressapp/MainActivity.java
+ com.example.stressapp.MainActivity
