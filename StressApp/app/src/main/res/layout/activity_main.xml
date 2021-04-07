@@ -7,13 +7,40 @@
     android:id="@+id/fragment_container"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
+        <ImageView
+            android:id="@+id/TitleImage"
+            android:layout_width="307dp"
+            android:layout_height="374dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/titleimagee91e63_com" />
+
+
+        <TextView
+            android:id="@+id/TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lose The Stress"
+            android:textAlignment="center"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/TitleImage"
+            android:textSize="50sp"
+             />
+
+        <Button
+            android:id="@+id/StartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/TitleText"
+            android:onClick="OnStartClick"
+            android:text="PlaceHolder"
+        />
+
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

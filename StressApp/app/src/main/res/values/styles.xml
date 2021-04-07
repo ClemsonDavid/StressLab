@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!-- Light Red -->
+    <!-- TitleButton -->
+    <style name="RedTitleButton" parent="android:style/Widget.Button">
+        <item name="android:backgroundTint">@color/RichRed</item>
+        <item name="android:textColor">@color/Cyan</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+
+
+
+
+
+
+</resources>

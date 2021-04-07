@@ -18,7 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:testOnly="true"
-        android:theme="@style/Theme.StressApp" >
+        android:theme="@style/LightPink" >
+        <activity
+            android:name="com.example.stressapp.Settings"
+            android:parentActivityName="com.example.stressapp.MainActivity" />
         <activity android:name="com.example.stressapp.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
