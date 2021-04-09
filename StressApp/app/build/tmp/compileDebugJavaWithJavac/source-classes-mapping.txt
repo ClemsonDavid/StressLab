@@ -1,9 +1,11 @@
 com/example/stressapp/BuildConfig.java
  com.example.stressapp.BuildConfig
-com/example/stressapp/MainFragment.java
- com.example.stressapp.MainFragment
 com/example/stressapp/Settings.java
  com.example.stressapp.Settings
  com.example.stressapp.Settings$1
 com/example/stressapp/MainActivity.java
  com.example.stressapp.MainActivity
+com/example/stressapp/MainFragment.java
+ com.example.stressapp.MainFragment
+com/example/stressapp/InputDataTitle.java
+ com.example.stressapp.InputDataTitle

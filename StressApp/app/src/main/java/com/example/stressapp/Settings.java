@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,26 +20,33 @@ public class Settings extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //Change appearance based on Theme
         SharedPreferences preferences = getSharedPreferences(PREFS, MODE_PRIVATE);
         String Theme = preferences.getString("Theme", "defaultreturn");
 
-        //TODO delete print statement
-        Log.d("Theme", "Got Theme from Pref is: "+ Theme);
+        super.onCreate(savedInstanceState);
+        int ImageSrc = R.drawable.titleimagee91e63_com;
 
         //Switch case for theme switching
         switch(Theme){
             case "Dark Theme":
                 setTheme(R.style.Dark);
+                ImageSrc = R.drawable.settingswhite;
                 break;
             case "Red Theme":
                 setTheme(R.style.LightPink);
+                ImageSrc = R.drawable.settingsred;
                 break;
 
         }
-
-
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+
+        ImageView TitleImage = findViewById(R.id.TitleImage);
+        TitleImage.setImageResource(ImageSrc);
+
+
 
         Spinner spinner = findViewById(R.id.ThemeSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -55,6 +63,7 @@ public class Settings extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+
 
 
 

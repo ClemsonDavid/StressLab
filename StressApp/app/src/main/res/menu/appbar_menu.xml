@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/Action_Settings"
+        android:title="@string/settings"
+        android:icon="@drawable/settingswhite"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/Action_Input"
+        android:title="@string/Input"
+        android:icon="@drawable/paperwhite"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/Action_Graph"
+        android:title="@string/Graphs"
+        android:icon="@drawable/picchartwhite"
+        app:showAsAction="ifRoom"/>
+
+
+
+
+</menu>

@@ -22,6 +22,9 @@
         <activity
             android:name="com.example.stressapp.Settings"
             android:parentActivityName="com.example.stressapp.MainActivity" />
+        <activity
+            android:name="com.example.stressapp.InputDataTitle"
+            android:parentActivityName="com.example.stressapp.MainActivity" />
         <activity android:name="com.example.stressapp.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
