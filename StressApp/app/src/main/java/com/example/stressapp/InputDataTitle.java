@@ -31,55 +31,51 @@ public class InputDataTitle extends AppCompatActivity {
         switch(Theme){
             case "Dark Theme":
                 setTheme(R.style.Dark);
-                Log.d("onResume", "Popping Dark");
                 break;
             case "Red Theme":
                 setTheme(R.style.LightPink);
-                Log.d("onResume", "Popping Red");
                 break;
 
         }
         setContentView(R.layout.activity_inputdatatitle);
 
-
-
-
-
-
-
     }
 
+    public void OptionSelect(View v){
+        String TypeInput = "";
+        Intent intent = new Intent(this, InputDataInput.class);
+        switch(v.getId()){
+            case R.id.EatingHabitsButton:
+                TypeInput = "Eating";
 
-    //Create menu taken from zybooks
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.appbar_menu, menu);
-        return true;
-    }
+                break;
+            case R.id.SleepingHabitsButton:
+                TypeInput = "Sleeping";
 
+                break;
+            case R.id.ExerciseButton:
+                TypeInput = "Exercise";
 
+                break;
+            case R.id.SocialButton:
+                TypeInput = "Social";
 
+                break;
+            case R.id.FinanceButton:
+                TypeInput = "Finance";
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.Action_Settings:
-                Intent intent = new Intent(this, Settings.class);
-                startActivity(intent);
-                return true;
+                break;
+            case R.id.MentalButton:
+                TypeInput = "Mental";
 
-            case R.id.Action_Input:
-                // Logout selected
-                return true;
+                break;
 
-            case R.id.Action_Graph:
-                // About selected
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
         }
+        intent.putExtra("Type",TypeInput);
+        startActivity(intent);
+
     }
+
 
 
 

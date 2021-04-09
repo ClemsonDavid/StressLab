@@ -18,11 +18,13 @@
         <item name="android:textSize">20dp</item>
     </style>
 
-    <!-- Title Sizes
-    <style name="MediumTextTitle" parent="android:style/TextAppearance">
-        <item name="android:textSize">20dp</item>
+    <!-- Title Sizes-->
+    <style name="MediumTextTitle">
+        <item name="android:textSize">30sp</item>
     </style>
--->
+    <style name="BigTextTitle">
+        <item name="android:textSize">50sp</item>
+    </style>
 
 
 

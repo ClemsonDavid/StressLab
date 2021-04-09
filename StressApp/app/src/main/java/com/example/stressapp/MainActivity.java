@@ -34,12 +34,10 @@ public class MainActivity extends AppCompatActivity {
         switch(Theme){
             case "Dark Theme":
                 setTheme(R.style.Dark);
-                Log.d("onResume", "Popping Dark");
                 ImageSrc = R.drawable.titleimagewhite_com;
                 break;
             case "Red Theme":
                 setTheme(R.style.LightPink);
-                Log.d("onResume", "Popping Red");
                 ImageSrc = R.drawable.titleimagee91e63_com;
                 break;
 

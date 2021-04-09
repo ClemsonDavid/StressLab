@@ -15,6 +15,10 @@
         <activity
             android:name=".InputDataTitle"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".InputDataInput"
+            android:parentActivityName=".InputDataTitle" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

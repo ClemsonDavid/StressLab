@@ -3,6 +3,8 @@ com/example/stressapp/BuildConfig.java
 com/example/stressapp/Settings.java
  com.example.stressapp.Settings
  com.example.stressapp.Settings$1
+com/example/stressapp/InputDataInput.java
+ com.example.stressapp.InputDataInput
 com/example/stressapp/MainActivity.java
  com.example.stressapp.MainActivity
 com/example/stressapp/MainFragment.java
