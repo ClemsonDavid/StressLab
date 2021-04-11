@@ -11,12 +11,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 public class InputDataTitle extends AppCompatActivity {
     private static final String PREFS = "prefs";
-
+    private static final double MaxBright = 255.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,17 @@ public class InputDataTitle extends AppCompatActivity {
                 setTheme(R.style.LightPink);
                 break;
 
+        }
+        //Auto Switch to dark theme if screen brightness is < 30% of max brightness
+        try {
+            float curBrightnessValue=android.provider.Settings.System.getInt(
+                    getContentResolver(), android.provider.Settings.System.SCREEN_BRIGHTNESS);
+            if(curBrightnessValue < MaxBright * 0.3){
+                setTheme(R.style.Dark);
+            }
+
+        } catch (android.provider.Settings.SettingNotFoundException e) {
+            e.printStackTrace();
         }
         setContentView(R.layout.activity_inputdatatitle);
 
@@ -75,6 +87,7 @@ public class InputDataTitle extends AppCompatActivity {
         startActivity(intent);
 
     }
+
 
 
 

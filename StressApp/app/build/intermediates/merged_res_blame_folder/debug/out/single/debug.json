@@ -8,28 +8,40 @@
         "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_socialinput.xml.flat",
+        "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_socialinput.xml"
     },
     {
-        "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_inputdatainput.xml.flat",
-        "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_inputdatainput.xml"
+        "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
     },
     {
         "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_titleimagelightgreen_com.png.flat",
         "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\titleimagelightgreen_com.png"
     },
     {
-        "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_redbackground.xml.flat",
-        "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\redbackground.xml"
+        "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_pngwing_com.png.flat",
         "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\pngwing_com.png"
     },
     {
-        "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_redbackground.xml.flat",
+        "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\redbackground.xml"
+    },
+    {
+        "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_neutral.png.flat",
+        "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\neutral.png"
+    },
+    {
+        "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_happy.png.flat",
+        "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\happy.png"
+    },
+    {
+        "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_mentalinput.xml.flat",
+        "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_mentalinput.xml"
     },
     {
         "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
@@ -42,6 +54,10 @@
     {
         "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_sleepinginput.xml.flat",
+        "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_sleepinginput.xml"
     },
     {
         "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\menu_appbar_menu.xml.flat",
@@ -58,6 +74,10 @@
     {
         "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_homewhite.png.flat",
         "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\homewhite.png"
+    },
+    {
+        "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_excerciseinput.xml.flat",
+        "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_excerciseinput.xml"
     },
     {
         "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_darkbackground.xml.flat",
@@ -86,6 +106,10 @@
     {
         "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_sad.png.flat",
+        "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\sad.png"
     },
     {
         "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_main.xml.flat",
@@ -126,5 +150,9 @@
     {
         "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_titleimagewhite_com.png.flat",
         "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\titleimagewhite_com.png"
+    },
+    {
+        "merged": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_financesinput.xml.flat",
+        "source": "C:\\Users\\hdavi\\AndroidStudioProjects\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_financesinput.xml"
     }
 ]

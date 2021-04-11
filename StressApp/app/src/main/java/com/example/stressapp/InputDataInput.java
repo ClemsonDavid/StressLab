@@ -1,3 +1,4 @@
+
 package com.example.stressapp;
 
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 public class InputDataInput extends AppCompatActivity {
     private static final String PREFS = "prefs";
@@ -31,7 +33,7 @@ public class InputDataInput extends AppCompatActivity {
                 break;
 
         }
-        setContentView(R.layout.activity_inputdatainput);
+
         Intent intent = getIntent();
         String Type = intent.getExtras().getString("Type");
         switch(Type){
@@ -39,19 +41,19 @@ public class InputDataInput extends AppCompatActivity {
                 EatingLayout();
                 break;
             case "Sleeping":
-
+                SleepingLayout();
                 break;
             case "Exercise":
-
+                ExcerciseLayout();
                 break;
             case "Social":
-
+                SocialInterLayout();
                 break;
             case "Finance":
-
+                FinancesLayout();
                 break;
             case "Mental":
-
+                MentalLayout();
                 break;
         }
 
@@ -59,16 +61,67 @@ public class InputDataInput extends AppCompatActivity {
 
     }
 
-    /*TODO Finsih up other type layouts with appropriate edittexts to grab info
-        After that, set up SQLite for datastorage
+    /*TODO
+        -Finsih up other type layouts with appropriate edittexts to grab info
+        -After that, set up SQLite for datastorage
+        -Make all default returns
      */
 
+
+    /*TODO
+        Get Data and put into SQL database
+     */
     private void EatingLayout(){
         setContentView(R.layout.activity_eatinginput);
-        TextView view = findViewById(R.id.InputTitleTextInput);
-        view.setText("Eating");
+
     }
 
+
+    /*TODO
+        Get Data from fragment and display, then put into database on confirm
+     */
+    private void SleepingLayout(){
+        setContentView(R.layout.activity_sleepinginput);
+    }
+
+    /*TODO
+        Get Data from edittext
+        Round down to 24 or 59 respectively
+     */
+
+    private void ExcerciseLayout(){
+        setContentView(R.layout.activity_excerciseinput);
+    }
+
+    /*TODO
+       Get Data and put into SQL database
+    */
+    private void SocialInterLayout(){
+        setContentView(R.layout.activity_socialinput);
+    }
+
+
+    /*TODO
+        Get Data and put into SQL database
+        round to 0.00 place
+     */
+    private void FinancesLayout(){
+        setContentView(R.layout.activity_financesinput);
+    }
+
+    /*TODO
+        Get Data and put into SQL database
+        Set Up Input
+     */
+    private void MentalLayout(){
+        setContentView(R.layout.activity_mentalinput);
+    }
+
+
+    public void showTimePickerDialog(View v) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
 
 
 
