@@ -11,7 +11,7 @@
 9-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml
 10
 11    <application
-11-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:5:5-29:19
+11-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:5:5-32:19
 12        android:allowBackup="true"
 12-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:6:9-35
 13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -47,20 +47,26 @@
 29-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:19:13-43
 30            android:parentActivityName="com.example.stressapp.InputDataTitle" />
 30-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:20:13-57
-31        <activity android:name="com.example.stressapp.MainActivity" >
-31-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:22:9-28:20
-31-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:22:19-47
-32            <intent-filter>
-32-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:23:13-27:29
-33                <action android:name="android.intent.action.MAIN" />
-33-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:24:17-69
-33-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:24:25-66
-34
-35                <category android:name="android.intent.category.LAUNCHER" />
-35-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:26:17-77
-35-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:26:27-74
-36            </intent-filter>
-37        </activity>
-38    </application>
-39
-40</manifest>
+31        <activity
+31-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:21:9-23:58
+32            android:name="com.example.stressapp.GraphDataTitle"
+32-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:22:13-43
+33            android:parentActivityName="com.example.stressapp.MainActivity" />
+33-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:23:13-55
+34        <activity android:name="com.example.stressapp.MainActivity" >
+34-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:25:9-31:20
+34-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:25:19-47
+35            <intent-filter>
+35-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:26:13-30:29
+36                <action android:name="android.intent.action.MAIN" />
+36-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:27:17-69
+36-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:27:25-66
+37
+38                <category android:name="android.intent.category.LAUNCHER" />
+38-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:29:17-77
+38-->C:\Users\hdavi\AndroidStudioProjects\StressLab\StressApp\app\src\main\AndroidManifest.xml:29:27-74
+39            </intent-filter>
+40        </activity>
+41    </application>
+42
+43</manifest>

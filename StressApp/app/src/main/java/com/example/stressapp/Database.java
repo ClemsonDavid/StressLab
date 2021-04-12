@@ -152,16 +152,37 @@ public class Database extends SQLiteOpenHelper {
      */
 
     public long addEat(int calories){
-        SQLiteDatabase db = getWritableDatabase();
 
-        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //Check for repeats and delete so only one record per day
+        SQLiteDatabase db = getReadableDatabase();
+
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
 
 
+        String sqlCheck = "select * from " + EatTable.TABLE + " where date = ? ";
+        Cursor cursorCheck = db.rawQuery(sqlCheck, new String[]{ formatDate.format(date) });
+        long removeid = -1;
+        if (cursorCheck.moveToFirst()){
+            Log.d("Repeat", "Found");
+            removeid = cursorCheck.getLong(0);
+        }else{
+            Log.d("Repeat", "Not Found");
+        }
+
+
+        db = getWritableDatabase();
+
+        //Delete Repeat if needed
+        if(removeid != -1){
+            db.delete(EatTable.TABLE, EatTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
+        }
 
         ContentValues values = new ContentValues();
         values.put(EatTable.COL_DATE, formatDate.format(date));
         values.put(EatTable.COL_CALORIES, calories);
+
+
 
         long Id = db.insert(EatTable.TABLE, null, values);
         Log.d("Database Insert Eat","Returned a : "+Id);
@@ -192,10 +213,30 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public long addSleep(int wakehour, int wakemin, int wakeam, int sleephour, int sleepmin, int sleepam){
-        SQLiteDatabase db = getWritableDatabase();
+        //Check for repeats and delete so only one record per day
+        SQLiteDatabase db = getReadableDatabase();
 
-        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
+
+
+        String sqlCheck = "select * from " + SleepTable.TABLE + " where date = ? ";
+        Cursor cursorCheck = db.rawQuery(sqlCheck, new String[]{ formatDate.format(date) });
+        long removeid = -1;
+        if (cursorCheck.moveToFirst()){
+            Log.d("Repeat", "Found");
+            removeid = cursorCheck.getLong(0);
+        }else{
+            Log.d("Repeat", "Not Found");
+        }
+
+
+
+        db = getWritableDatabase();
+
+        if(removeid != -1){
+            db.delete(SleepTable.TABLE, SleepTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
+        }
 
 
 
@@ -242,17 +283,30 @@ public class Database extends SQLiteOpenHelper {
 
 
     public long addExcercise(int hours, int mins){
-        SQLiteDatabase db = getWritableDatabase();
+        //Check for repeats and delete so only one record per day
+        SQLiteDatabase db = getReadableDatabase();
 
-        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
 
 
-        /*
-        private static final String COL_DATE = "date";
-        private static final String COL_HOURS = "hours";
-        private static final String COL_MINS = "minutes";
-         */
+        String sqlCheck = "select * from " + ExcerciseTable.TABLE + " where date = ? ";
+        Cursor cursorCheck = db.rawQuery(sqlCheck, new String[]{ formatDate.format(date) });
+        long removeid = -1;
+        if (cursorCheck.moveToFirst()){
+            Log.d("Repeat", "Found");
+            removeid = cursorCheck.getLong(0);
+        }else{
+            Log.d("Repeat", "Not Found");
+        }
+
+
+
+        db = getWritableDatabase();
+
+        if(removeid != -1){
+            db.delete(ExcerciseTable.TABLE, ExcerciseTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
+        }
 
         ContentValues values = new ContentValues();
         values.put(ExcerciseTable.COL_DATE, formatDate.format(date));
@@ -289,12 +343,30 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public long addSocial(int hours, int mins, int numppl){
-        SQLiteDatabase db = getWritableDatabase();
+        //Check for repeats and delete so only one record per day
+        SQLiteDatabase db = getReadableDatabase();
 
-        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
 
 
+        String sqlCheck = "select * from " + SocialTable.TABLE + " where date = ? ";
+        Cursor cursorCheck = db.rawQuery(sqlCheck, new String[]{ formatDate.format(date) });
+        long removeid = -1;
+        if (cursorCheck.moveToFirst()){
+            Log.d("Repeat", "Found");
+            removeid = cursorCheck.getLong(0);
+        }else{
+            Log.d("Repeat", "Not Found");
+        }
+
+
+
+        db = getWritableDatabase();
+
+        if(removeid != -1){
+            db.delete(SocialTable.TABLE, SocialTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
+        }
 
         Log.d("Test inside insert", "hours: "+hours+" mins: "+mins+" numPpl: "+numppl);
         ContentValues values = new ContentValues();
@@ -332,12 +404,30 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public long addFinance(double money){
-        SQLiteDatabase db = getWritableDatabase();
+        //Check for repeats and delete so only one record per day
+        SQLiteDatabase db = getReadableDatabase();
 
-        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
 
 
+        String sqlCheck = "select * from " + FinanceTable.TABLE + " where date = ? ";
+        Cursor cursorCheck = db.rawQuery(sqlCheck, new String[]{ formatDate.format(date) });
+        long removeid = -1;
+        if (cursorCheck.moveToFirst()){
+            Log.d("Repeat", "Found");
+            removeid = cursorCheck.getLong(0);
+        }else{
+            Log.d("Repeat", "Not Found");
+        }
+
+
+
+        db = getWritableDatabase();
+
+        if(removeid != -1){
+            db.delete(FinanceTable.TABLE, FinanceTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
+        }
 
         ContentValues values = new ContentValues();
         values.put(FinanceTable.COL_DATE, formatDate.format(date));
@@ -371,12 +461,30 @@ public class Database extends SQLiteOpenHelper {
     }
 
     public long addMood(int mood){
-        SQLiteDatabase db = getWritableDatabase();
+        //Check for repeats and delete so only one record per day
+        SQLiteDatabase db = getReadableDatabase();
 
-        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
 
 
+        String sqlCheck = "select * from " + MoodTable.TABLE + " where date = ? ";
+        Cursor cursorCheck = db.rawQuery(sqlCheck, new String[]{ formatDate.format(date) });
+        long removeid = -1;
+        if (cursorCheck.moveToFirst()){
+            Log.d("Repeat", "Found");
+            removeid = cursorCheck.getLong(0);
+        }else{
+            Log.d("Repeat", "Not Found");
+        }
+
+
+
+        db = getWritableDatabase();
+
+        if(removeid != -1){
+            db.delete(MoodTable.TABLE, MoodTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
+        }
 
         ContentValues values = new ContentValues();
         values.put(MoodTable.COL_DATE, formatDate.format(date));
@@ -408,6 +516,7 @@ public class Database extends SQLiteOpenHelper {
 
         return Id;
     }
+
     /*
         TODO create all get functions
      */

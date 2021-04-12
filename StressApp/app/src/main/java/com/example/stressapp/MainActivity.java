@@ -97,18 +97,21 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.Action_Settings:
+                //Settings Selected
                 Intent intent = new Intent(this, Settings.class);
                 startActivity(intent);
                 return true;
 
             case R.id.Action_Input:
-                // Logout selected
+                // Input selected
                 intent = new Intent(this, InputDataTitle.class);
                 startActivity(intent);
                 return true;
 
             case R.id.Action_Graph:
-                // About selected
+                //Graph selected
+                intent = new Intent(this, GraphDataTitle.class);
+                startActivity(intent);
                 return true;
 
             default:

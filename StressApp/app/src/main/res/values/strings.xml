@@ -18,6 +18,10 @@
     <string name="Graphs">Graphs</string>
 
 
+    <!-- Graph for Data-->
+    <string name="graphtitletitle">Choose Which Type of Data to See Graphed</string>
+
+
     <!-- Input for Data -->
     <!-- Input Data Buttons -->
     <string name="inputtitletitle">Choose Which Type of Data to Input</string>

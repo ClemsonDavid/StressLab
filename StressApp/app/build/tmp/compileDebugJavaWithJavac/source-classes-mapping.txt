@@ -3,6 +3,10 @@ com/example/stressapp/BuildConfig.java
 com/example/stressapp/Settings.java
  com.example.stressapp.Settings
  com.example.stressapp.Settings$1
+com/example/stressapp/GraphDataTitle.java
+ com.example.stressapp.GraphDataTitle
+com/example/stressapp/InputDataTitle.java
+ com.example.stressapp.InputDataTitle
 com/example/stressapp/MainFragment.java
  com.example.stressapp.MainFragment
 com/example/stressapp/MainActivity.java
@@ -17,5 +21,3 @@ com/example/stressapp/Database.java
  com.example.stressapp.Database$MoodTable
  com.example.stressapp.Database$SleepTable
  com.example.stressapp.Database$SocialTable
-com/example/stressapp/InputDataTitle.java
- com.example.stressapp.InputDataTitle

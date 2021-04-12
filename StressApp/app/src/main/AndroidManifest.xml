@@ -18,6 +18,9 @@
         <activity
             android:name=".InputDataInput"
             android:parentActivityName=".InputDataTitle" />
+        <activity
+            android:name=".GraphDataTitle"
+            android:parentActivityName=".MainActivity" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
