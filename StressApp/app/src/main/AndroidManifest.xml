@@ -21,6 +21,10 @@
         <activity
             android:name=".GraphDataTitle"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".GraphDataInput"
+            android:parentActivityName=".GraphDataTitle" />
+
 
         <activity android:name=".MainActivity">
             <intent-filter>

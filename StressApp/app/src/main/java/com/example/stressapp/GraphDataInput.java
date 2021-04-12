@@ -3,13 +3,14 @@ package com.example.stressapp;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class GraphDataTitle extends AppCompatActivity {
+public class GraphDataInput extends AppCompatActivity {
     private static final String PREFS = "prefs";
     private static final double MaxBright = 255.0;
+    Database db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,42 +42,32 @@ public class GraphDataTitle extends AppCompatActivity {
         } catch (android.provider.Settings.SettingNotFoundException e) {
             e.printStackTrace();
         }
-        setContentView(R.layout.activity_graphdatatitle);
 
-    }
+        //Create Instance of db
+        db = new Database(this);
 
-    public void OptionSelect(View v) {
-        String TypeInput = "";
-        Intent intent = new Intent(this, GraphDataInput.class);
-        switch (v.getId()) {
-            case R.id.EatingHabitsButton:
-                TypeInput = "Eating";
-
+        Intent intent = getIntent();
+        String Type = intent.getExtras().getString("Type");
+        switch(Type){
+            case "Eating":
+                setContentView(R.layout.activity_eatinginput);
                 break;
-            case R.id.SleepingHabitsButton:
-                TypeInput = "Sleeping";
-
+            case "Sleeping":
+                setContentView(R.layout.activity_sleepinginput);
                 break;
-            case R.id.ExerciseButton:
-                TypeInput = "Exercise";
-
+            case "Exercise":
+                setContentView(R.layout.activity_excerciseinput);
                 break;
-            case R.id.SocialButton:
-                TypeInput = "Social";
-
+            case "Social":
+                setContentView(R.layout.activity_socialinput);
                 break;
-            case R.id.FinanceButton:
-                TypeInput = "Finance";
-
+            case "Finance":
+                setContentView(R.layout.activity_financesinput);
                 break;
-            case R.id.MentalButton:
-                TypeInput = "Mental";
-
+            case "Mental":
+                setContentView(R.layout.activity_mentalinput);
                 break;
-
         }
-        intent.putExtra("Type", TypeInput);
-        startActivity(intent);
 
     }
 
