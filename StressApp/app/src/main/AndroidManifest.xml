@@ -18,6 +18,12 @@
         <activity
             android:name=".InputDataInput"
             android:parentActivityName=".InputDataTitle" />
+        <activity
+            android:name=".DistractionTitle"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".DistractionInput"
+            android:parentActivityName=".DistractionTitle"/>
 
         <activity android:name=".MainActivity">
             <intent-filter>

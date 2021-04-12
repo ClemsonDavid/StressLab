@@ -17,7 +17,11 @@
         android:icon="@drawable/picchartwhite"
         app:showAsAction="ifRoom"/>
 
-
+    <item android:id="@+id/Action_Distraction"
+        android:title="@string/Distractions"
+        android:icon="@drawable/icons8_ferris_wheel_96"
+        android:iconTint="@color/white"
+        app:showAsAction="ifRoom"/>
 
 
 </menu>

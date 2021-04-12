@@ -28,6 +28,12 @@
         <activity
             android:name="com.example.stressapp.InputDataInput"
             android:parentActivityName="com.example.stressapp.InputDataTitle" />
+        <activity
+            android:name="com.example.stressapp.DistractionTitle"
+            android:parentActivityName="com.example.stressapp.MainActivity" />
+        <activity
+            android:name="com.example.stressapp.DistractionInput"
+            android:parentActivityName="com.example.stressapp.DistractionTitle" />
         <activity android:name="com.example.stressapp.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

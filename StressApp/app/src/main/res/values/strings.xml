@@ -16,6 +16,7 @@
     <string name="Home">Home</string>
     <string name="Input">Input</string>
     <string name="Graphs">Graphs</string>
+    <string name="Distractions">Distractions</string>
 
     <!-- Input Data Buttons -->
     <string name="inputtitletitle">Choose Which Type of Data to Input</string>
@@ -26,7 +27,8 @@
     <string name="finances">Finances</string>
     <string name="mental">Mental Health</string>
 
-
+    <string name="distractiontitletitle">Which Distraction Do You Need?</string>
+    <string name="bubbles">Bubble Pop</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -1,3 +1,5 @@
+com/example/stressapp/BubblesView.java
+ com.example.stressapp.BubblesView
 com/example/stressapp/BuildConfig.java
  com.example.stressapp.BuildConfig
 com/example/stressapp/Settings.java
@@ -7,6 +9,12 @@ com/example/stressapp/InputDataInput.java
  com.example.stressapp.InputDataInput
 com/example/stressapp/MainActivity.java
  com.example.stressapp.MainActivity
+com/example/stressapp/DistractionInput.java
+ com.example.stressapp.DistractionInput
+ com.example.stressapp.DistractionInput$1
+ com.example.stressapp.DistractionInput$2
+com/example/stressapp/DistractionTitle.java
+ com.example.stressapp.DistractionTitle
 com/example/stressapp/MainFragment.java
  com.example.stressapp.MainFragment
 com/example/stressapp/InputDataTitle.java

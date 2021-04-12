@@ -51,6 +51,7 @@ animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
 array Themes
+array circle_colors
 attr actionBarDivider
 attr actionBarItemBackground
 attr actionBarPopupTheme
@@ -1662,6 +1663,9 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable icons8_ferris_wheel_24
+drawable icons8_ferris_wheel_48
+drawable icons8_ferris_wheel_96
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
@@ -1707,13 +1711,16 @@ drawable titleimagewhite_com
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
+id Action_Distraction
 id Action_Graph
 id Action_Input
 id Action_Settings
 id BOTTOM_END
 id BOTTOM_START
+id BubblesButton
 id CTRL
 id CenterForVert
+id DistractionTitleText
 id EatingHabitsButton
 id ExerciseButton
 id FUNCTION
@@ -2198,6 +2205,8 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_bubbles
+layout activity_distractiondatatitle
 layout activity_eatinginput
 layout activity_inputdatainput
 layout activity_inputdatatitle
@@ -2299,6 +2308,8 @@ menu appbar_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
+raw popping_sound
+string Distractions
 string Graphs
 string Home
 string Input
@@ -2334,12 +2345,14 @@ string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string bottomsheet_action_expand_halfway
+string bubbles
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
 string chip_text
 string clear_text_end_icon_content_description
 string confirm
+string distractiontitletitle
 string eating
 string error_icon_content_description
 string exercise
