@@ -2,6 +2,7 @@
 package com.example.stressapp;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,6 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -113,60 +116,234 @@ public class InputDataInput extends AppCompatActivity {
         Log.d("Test Total", ""+Total);
 
         Log.d("Before DB Insert", "");
-        db.addEat(Total);
+        long success = db.addEat(Total);
         Log.d("After DB Insert", "");
 
+        if(success != -1){
+            Context context = getApplicationContext();
+            CharSequence text = "Input Recorded!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }else{
+            Context context = getApplicationContext();
+            CharSequence text = "Error in Input!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
 
     }
 
 
 
+    public void SleepConfirm(View v){
+            TimePicker WakePicker = findViewById(R.id.WakePicker);
+            TimePicker SleepPicker = findViewById(R.id.SleepPicker);
+            int wakeHour, wakeMin, sleepHour, sleepMin, wakeAM, sleepAM;
+            Log.d("Test Time Hour", ""+WakePicker.getHour());
+            Log.d("Test Time Hour", ""+WakePicker.getMinute());
 
-    /*TODO
-        Get Data from fragment and display, then put into database on confirm
-     */
-    private void SleepingLayout(){
+            wakeHour = WakePicker.getHour();
+            sleepHour = SleepPicker.getHour();
+            wakeMin = WakePicker.getMinute();
+            sleepMin = SleepPicker.getMinute();
+            //Get Am or Pm
+            if(wakeHour > 12){
+                wakeHour -= 12;
+                wakeAM = 0;
+            }else{
+                wakeAM = 1;
+            }
+            if(sleepHour > 12){
+                sleepHour -= 12;
+                sleepAM = 0;
+            }else{
+                sleepAM = 1;
+            }
+
+        long success = db.addSleep(wakeHour, wakeMin, wakeAM, sleepHour, sleepMin, sleepAM);
+        Log.d("After DB Insert", "");
+
+        if(success != -1){
+            Context context = getApplicationContext();
+            CharSequence text = "Input Recorded!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }else{
+            Context context = getApplicationContext();
+            CharSequence text = "Error in Input!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
+
+
 
     }
 
-    /*TODO
-        Get Data from edittext
-        Round down to 24 or 59 respectively
-     */
 
-    private void ExcerciseLayout(){
+    public void ExerciseConfirm(View v){
+        EditText EditHours = findViewById(R.id.EditHours);
+        EditText EditMins = findViewById(R.id.EditMins);
+        String Hours = EditHours.getText().toString();
+        String Mins = EditMins.getText().toString();
+        int hours, mins;
+        hours = Integer.parseInt("0"+Hours);
+        mins = Integer.parseInt("0"+Mins);
+        if(hours >24){
+            hours = 24;
+        }
+        if(mins > 59){
+            mins = 59;
+        }
+
+        long success = db.addExcercise(hours, mins);
+        Log.d("After DB Insert", "");
+
+        if(success != -1){
+            Context context = getApplicationContext();
+            CharSequence text = "Input Recorded!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }else{
+            Context context = getApplicationContext();
+            CharSequence text = "Error in Input!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
 
     }
+
+
 
     /*TODO
        Get Data and put into SQL database
     */
-    private void SocialInterLayout(){
+    public void SocialConfirm(View v){
+        EditText EditHours = findViewById(R.id.EditHours);
+        EditText EditMins = findViewById(R.id.EditMins);
+        EditText EditNumPpl = findViewById(R.id.EditNumPpl);
+        String Hours = EditHours.getText().toString();
+        String Mins = EditMins.getText().toString();
+        String NumPpl = EditNumPpl.getText().toString();
+        int hours, mins, numPpl;
+        hours = Integer.parseInt("0"+Hours);
+        mins = Integer.parseInt("0"+Mins);
+        numPpl = Integer.parseInt("0"+NumPpl);
+        if(hours >24){
+            hours = 24;
+        }
+        if(mins > 59){
+            mins = 59;
+        }
+
+        Log.d("Test before insert", "hours: "+hours+" mins: "+mins+" numPpl: "+numPpl);
+        long success = db.addSocial(hours, mins, numPpl);
+        Log.d("After DB Insert", "");
+
+        if(success != -1){
+            Context context = getApplicationContext();
+            CharSequence text = "Input Recorded!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }else{
+            Context context = getApplicationContext();
+            CharSequence text = "Error in Input!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
+
+
 
     }
 
 
-    /*TODO
-        Get Data and put into SQL database
-        round to 0.00 place
-     */
-    private void FinancesLayout(){
+
+    public void FinanceConfirm(View v){
+        EditText EditMoney = findViewById(R.id.EditMoney);
+        String Money = EditMoney.getText().toString();
+        double money;
+        money = Double.parseDouble("0"+Money);
+        money = Math.round(money * 100.0)/ 100.0;
+        Log.d("Test before insert", ""+money);
+
+
+        long success = db.addFinance(money);
+        Log.d("After DB Insert", "");
+
+        if(success != -1){
+            Context context = getApplicationContext();
+            CharSequence text = "Input Recorded!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }else{
+            Context context = getApplicationContext();
+            CharSequence text = "Error in Input!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
 
     }
 
-    /*TODO
-        Get Data and put into SQL database
-        Set Up Input
-     */
-    private void MentalLayout(){
 
+    public void MentalConfirm(View v){
+
+        Log.d("Which pic", ""+v.getTag());
+        String FaceType = v.getTag().toString();
+        long success = -1;
+        switch (FaceType){
+            case "Sad":
+                success = db.addMood(0);
+                break;
+            case "Neutral":
+                success = db.addMood(1);
+                break;
+            case "Happy":
+                success = db.addMood(2);
+                break;
+        }
+
+        if(success != -1){
+            Context context = getApplicationContext();
+            CharSequence text = "Input Recorded!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }else{
+            Context context = getApplicationContext();
+            CharSequence text = "Error in Input!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
     }
 
 
-    public void showTimePickerDialog(View v) {
-        DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(getSupportFragmentManager(), "timePicker");
-    }
+
 
 
 

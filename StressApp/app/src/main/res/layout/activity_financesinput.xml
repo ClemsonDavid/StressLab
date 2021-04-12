@@ -32,25 +32,33 @@
             />
 
         <EditText
-            android:id="@+id/EditHours"
+            android:id="@+id/EditMoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/TextforMoney"
             android:layout_alignBaseline="@id/TextforMoney"
             style="@style/MediumTextTitle"
-            android:text="@string/DefaultEating"
+            android:text="@string/DefaultDouble"
             android:inputType="numberDecimal"
             />
 
+
+        <Button
+            android:id="@+id/Confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/EditMoney"
+            android:text="@string/confirm"
+            android:onClick="FinanceConfirm"
+            />
         <TextView
             android:id="@+id/SubInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/EditHours"
+            android:layout_below="@id/Confirm"
             style="@style/SubTextTitle"
             android:text="@string/SubFinancesHeading"
             />
-
 
 
 

@@ -1715,10 +1715,7 @@ id Action_Input
 id Action_Settings
 id BOTTOM_END
 id BOTTOM_START
-id ButtonforSleep
-id ButtonforWake
 id CTRL
-id CenterForHorz
 id CenterForVert
 id Confirm
 id EatingHabitsButton
@@ -1727,6 +1724,7 @@ id EditDinner
 id EditHours
 id EditLunch
 id EditMins
+id EditMoney
 id EditNumPpl
 id ExerciseButton
 id FUNCTION
@@ -1744,6 +1742,7 @@ id SHOW_PATH
 id SHOW_PROGRESS
 id SYM
 id SadFace
+id SleepPicker
 id SleepingHabitsButton
 id SocialButton
 id StartButton
@@ -1757,9 +1756,12 @@ id TextforLunch
 id TextforMins
 id TextforMoney
 id TextforNumPpl
+id TextforSleep
+id TextforWake
 id ThemeSpinner
 id TitleImage
 id TitleText
+id WakePicker
 id accelerate
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -2328,6 +2330,7 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 string Breakfast
+string DefaultDouble
 string DefaultEating
 string DefaultSleeping
 string DefaultWaking

@@ -28,9 +28,7 @@ public class Database extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, VERSION);
     }
 
-    /*
-        TODO create tables for all data tracking
-     */
+
     //Database class for eating
     private static final class EatTable {
         private static final String TABLE = "eat";
@@ -40,12 +38,19 @@ public class Database extends SQLiteOpenHelper {
     }
 
     //Database class for sleeping
+    //0 AM for am, 1 AM for pm
     private static final class SleepTable{
         private static final String TABLE = "sleep";
         private static final String COL_ID = "_id";
         private static final String COL_DATE = "date";
-        private static final String COL_WAKEUP = "wakeup";
-        private static final String COL_BEDTIME = "bedtime";
+        private static final String COL_WAKEUPHOUR = "wakeuphour";
+        private static final String COL_BEDTIMEHOUR = "bedtimehour";
+        private static final String COL_WAKEUPMIN = "wakeupmin";
+        private static final String COL_BEDTIMEMIN = "bedtimemin";
+        private static final String COL_WAKEUPAM = "wakeupAM";
+        private static final String COL_BEDTIMEAM = "bedtimeAM";
+
+
     }
 
     //Database class for ExcerciseTable
@@ -64,7 +69,7 @@ public class Database extends SQLiteOpenHelper {
         private static final String COL_DATE = "date";
         private static final String COL_HOURS = "hours";
         private static final String COL_MINS = "minutes";
-        private static final String COL_UNIQUE = "unique";
+        private static final String COL_UNIQUENUM = "people";
     }
     //Database class for FinanceTable
     private static final class FinanceTable {
@@ -82,9 +87,7 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
-    /*
-        TODO make all tables
-     */
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -97,8 +100,12 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("create table " + SleepTable.TABLE + " (" +
                 SleepTable.COL_ID + " integer primary key autoincrement, " +
                 SleepTable.COL_DATE + " text, " +
-                SleepTable.COL_WAKEUP + " text, " +
-                SleepTable.COL_BEDTIME + " text)");
+                SleepTable.COL_WAKEUPHOUR + " integer, " +
+                SleepTable.COL_WAKEUPMIN + " integer, " +
+                SleepTable.COL_WAKEUPAM + " integer, " +
+                SleepTable.COL_BEDTIMEHOUR + " integer, " +
+                SleepTable.COL_BEDTIMEMIN + " integer, " +
+                SleepTable.COL_BEDTIMEAM + " integer)");
         //Create ExerciseTable
         db.execSQL("create table " + ExcerciseTable.TABLE + " (" +
                 ExcerciseTable.COL_ID + " integer primary key autoincrement, " +
@@ -111,24 +118,22 @@ public class Database extends SQLiteOpenHelper {
                 SocialTable.COL_DATE + " text, " +
                 SocialTable.COL_HOURS + " integer, " +
                 SocialTable.COL_MINS + " integer, " +
-                SocialTable.COL_UNIQUE + "integer)");
+                SocialTable.COL_UNIQUENUM + " integer)");
         //Create FinanceTable
         db.execSQL("create table " + FinanceTable.TABLE + " (" +
                 FinanceTable.COL_ID + " integer primary key autoincrement, " +
                 FinanceTable.COL_DATE + " text, " +
-                FinanceTable.COL_MONEY + " integer)");
+                FinanceTable.COL_MONEY + " double)");
         //Create MoodTable
         db.execSQL("create table " + MoodTable.TABLE + " (" +
                 MoodTable.COL_ID + " integer primary key autoincrement, " +
                 MoodTable.COL_DATE + " text, " +
-                MoodTable.COL_MOOD + " text)");
+                MoodTable.COL_MOOD + " integer)");
 
     }
 
 
-    /*
-        TODO make sure to include all tables
-     */
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion,
                           int newVersion) {
@@ -142,6 +147,9 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    /*
+        TODO create all Add functions
+     */
 
     public long addEat(int calories){
         SQLiteDatabase db = getWritableDatabase();
@@ -155,9 +163,11 @@ public class Database extends SQLiteOpenHelper {
         values.put(EatTable.COL_DATE, formatDate.format(date));
         values.put(EatTable.COL_CALORIES, calories);
 
-        long movieId = db.insert(EatTable.TABLE, null, values);
-        Log.d("Database Insert Eat","Returned a : "+movieId);
+        long Id = db.insert(EatTable.TABLE, null, values);
+        Log.d("Database Insert Eat","Returned a : "+Id);
 
+
+        //TODO remove below
 
         db = getReadableDatabase();
 
@@ -177,10 +187,229 @@ public class Database extends SQLiteOpenHelper {
 
 
 
-        return movieId;
+        return Id;
+
+    }
+
+    public long addSleep(int wakehour, int wakemin, int wakeam, int sleephour, int sleepmin, int sleepam){
+        SQLiteDatabase db = getWritableDatabase();
+
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+
+
+
+        ContentValues values = new ContentValues();
+        values.put(SleepTable.COL_DATE, formatDate.format(date));
+        values.put(SleepTable.COL_WAKEUPHOUR, wakehour);
+        values.put(SleepTable.COL_WAKEUPMIN, wakemin);
+        values.put(SleepTable.COL_WAKEUPAM, wakeam);
+        values.put(SleepTable.COL_BEDTIMEHOUR, sleephour);
+        values.put(SleepTable.COL_BEDTIMEMIN, sleepmin);
+        values.put(SleepTable.COL_BEDTIMEAM, sleepam);
+
+        long Id = db.insert(SleepTable.TABLE, null, values);
+        Log.d("Database Insert Eat","Returned a : "+Id);
+
+
+        //TODO remove below
+
+        db = getReadableDatabase();
+
+        String sql = "select * from " + SleepTable.TABLE + " ";
+        Cursor cursor = db.rawQuery(sql, new String[]{});
+        if (cursor.moveToFirst()) {
+            do {
+                long id = cursor.getLong(0);
+                String time = cursor.getString(1);
+                String COL_WAKEUPHOUR = cursor.getString(2);
+                String COL_WAKEUPMIN = cursor.getString(3);
+                String COL_WAKEUPAM = cursor.getString(4);
+                String COL_BEDTIMEHOUR = cursor.getString(5);
+                String COL_BEDTIMEMIN = cursor.getString(6);
+                String COL_BEDTIMEAM = cursor.getString(7);
+                Log.d(TAG, "Returned = " + id + ", DATE " + time + ", COL_WAKEUPHOUR " + COL_WAKEUPHOUR + ", COL_WAKEUPMIN " +COL_WAKEUPMIN+ "," +
+                        "COL_WAKEUPAM " +COL_WAKEUPAM+", COL_BEDTIMEHOUR "+COL_BEDTIMEHOUR+", COL_BEDTIMEMIN" +COL_BEDTIMEMIN+", COL_BEDTIMEAM"+COL_BEDTIMEAM);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+
+
+        return Id;
 
     }
 
 
+    public long addExcercise(int hours, int mins){
+        SQLiteDatabase db = getWritableDatabase();
+
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+
+
+        /*
+        private static final String COL_DATE = "date";
+        private static final String COL_HOURS = "hours";
+        private static final String COL_MINS = "minutes";
+         */
+
+        ContentValues values = new ContentValues();
+        values.put(ExcerciseTable.COL_DATE, formatDate.format(date));
+        values.put(ExcerciseTable.COL_HOURS, hours);
+        values.put(ExcerciseTable.COL_MINS, mins);
+
+        long Id = db.insert(ExcerciseTable.TABLE, null, values);
+        Log.d("Database Insert Eat","Returned a : "+Id);
+
+
+        //TODO remove below
+
+        db = getReadableDatabase();
+
+        String sql = "select * from " + ExcerciseTable.TABLE + " ";
+        Cursor cursor = db.rawQuery(sql, new String[]{});
+        if (cursor.moveToFirst()) {
+            do {
+                long id = cursor.getLong(0);
+                String time = cursor.getString(1);
+                String COL_HOURS = cursor.getString(2);
+                String COL_MINS = cursor.getString(3);
+                Log.d(TAG, "Returned = " + id + ", " + time + ", COL_HOURS " + COL_HOURS +", COL_MINS "+COL_MINS);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+
+
+
+
+        return Id;
+
+    }
+
+    public long addSocial(int hours, int mins, int numppl){
+        SQLiteDatabase db = getWritableDatabase();
+
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+
+
+
+        Log.d("Test inside insert", "hours: "+hours+" mins: "+mins+" numPpl: "+numppl);
+        ContentValues values = new ContentValues();
+        values.put(SocialTable.COL_DATE, formatDate.format(date));
+        values.put(SocialTable.COL_HOURS, hours);
+        values.put(SocialTable.COL_MINS, mins);
+        values.put(SocialTable.COL_UNIQUENUM, numppl);
+
+        long Id = db.insert(SocialTable.TABLE, null, values);
+        Log.d("Database Insert Eat","Returned a : "+Id);
+
+
+        //TODO remove below
+
+        db = getReadableDatabase();
+
+        String sql = "select * from " + SocialTable.TABLE + " ";
+        Cursor cursor = db.rawQuery(sql, new String[]{});
+        if (cursor.moveToFirst()) {
+            do {
+                long id = cursor.getLong(0);
+                String time = cursor.getString(1);
+                String COL_HOURS = cursor.getString(2);
+                String COL_MINS = cursor.getString(3);
+                String COL_UNIQUENUM = cursor.getString(4);
+                Log.d(TAG, "Returned = " + id + ", " + time + ", COL_HOURS " + COL_HOURS +", COL_MINS "+COL_MINS+", COL_UNIQUENUM "+COL_UNIQUENUM);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+
+
+        return Id;
+
+    }
+
+    public long addFinance(double money){
+        SQLiteDatabase db = getWritableDatabase();
+
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+
+
+
+        ContentValues values = new ContentValues();
+        values.put(FinanceTable.COL_DATE, formatDate.format(date));
+        values.put(FinanceTable.COL_MONEY, money);
+
+        long Id = db.insert(FinanceTable.TABLE, null, values);
+        Log.d("Database Insert Eat","Returned a : "+Id);
+
+
+        //TODO remove below
+
+        db = getReadableDatabase();
+
+        String sql = "select * from " + FinanceTable.TABLE + " ";
+        Cursor cursor = db.rawQuery(sql, new String[]{});
+        if (cursor.moveToFirst()) {
+            do {
+                long id = cursor.getLong(0);
+                String time = cursor.getString(1);
+                String Money = cursor.getString(2);
+                Log.d(TAG, "Returned = " + id + ", " + time + ",COL_MONEY " + Money );
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+
+
+
+
+        return Id;
+    }
+
+    public long addMood(int mood){
+        SQLiteDatabase db = getWritableDatabase();
+
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+
+
+
+        ContentValues values = new ContentValues();
+        values.put(MoodTable.COL_DATE, formatDate.format(date));
+        values.put(MoodTable.COL_MOOD, mood);
+
+        long Id = db.insert(MoodTable.TABLE, null, values);
+        Log.d("Database Insert Eat","Returned a : "+Id);
+
+
+        //TODO remove below
+
+        db = getReadableDatabase();
+
+        String sql = "select * from " + MoodTable.TABLE + " ";
+        Cursor cursor = db.rawQuery(sql, new String[]{});
+        if (cursor.moveToFirst()) {
+            do {
+                long id = cursor.getLong(0);
+                String time = cursor.getString(1);
+                String Mood = cursor.getString(2);
+                Log.d(TAG, "Returned = " + id + ", " + time + ",Mood " + Mood );
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+
+
+
+
+        return Id;
+    }
+    /*
+        TODO create all get functions
+     */
 
 }

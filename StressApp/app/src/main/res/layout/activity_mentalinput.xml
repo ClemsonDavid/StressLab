@@ -30,7 +30,8 @@
             android:layout_height="100dp"
             android:scaleType="fitXY"
             android:src="@drawable/sad"
-            android:onClick="showTimePickerDialog"
+            android:onClick="MentalConfirm"
+            android:tag="Sad"
             />
 
 
@@ -43,7 +44,8 @@
             android:layout_height="100dp"
             android:scaleType="fitXY"
             android:src="@drawable/neutral"
-
+            android:onClick="MentalConfirm"
+            android:tag="Neutral"
             />
 
         <ImageView
@@ -55,7 +57,8 @@
             android:layout_height="100dp"
             android:scaleType="fitXY"
             android:src="@drawable/happy"
-
+            android:onClick="MentalConfirm"
+            android:tag="Happy"
             />
 
 

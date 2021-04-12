@@ -63,11 +63,20 @@
             android:inputType="number"
             android:maxLength="2"
             />
+        <Button
+            android:id="@+id/Confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/EditMins"
+            android:text="@string/confirm"
+            android:onClick="ExerciseConfirm"
+            />
+
         <TextView
             android:id="@+id/SubInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/EditMins"
+            android:layout_below="@id/Confirm"
             style="@style/SubTextTitle"
             android:text="@string/SubExcerciseHeading"
             />
