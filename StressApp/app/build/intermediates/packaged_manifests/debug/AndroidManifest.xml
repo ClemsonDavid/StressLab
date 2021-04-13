@@ -34,6 +34,15 @@
         <activity
             android:name="com.example.stressapp.DistractionInput"
             android:parentActivityName="com.example.stressapp.DistractionTitle" />
+        <activity
+            android:name="com.example.stressapp.GraphDataTitle"
+            android:parentActivityName="com.example.stressapp.MainActivity" />
+        <activity
+            android:name="com.example.stressapp.GraphDataGraph"
+            android:parentActivityName="com.example.stressapp.GraphDataTitle" />
+        <activity
+            android:name="com.example.stressapp.DeveloperArea"
+            android:parentActivityName="com.example.stressapp.Settings" />
         <activity android:name="com.example.stressapp.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -9,8 +9,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+import java.util.Vector;
 
 import static android.content.ContentValues.TAG;
 
@@ -23,6 +32,7 @@ public class Database extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "stressinfo.db";
     private static final int VERSION = 1;
+    private static final int MaxMonth = 32;
 
     public Database(Context context) {
         super(context, DATABASE_NAME, null, VERSION);
@@ -163,6 +173,7 @@ public class Database extends SQLiteOpenHelper {
         String sqlCheck = "select * from " + EatTable.TABLE + " where date = ? ";
         Cursor cursorCheck = db.rawQuery(sqlCheck, new String[]{ formatDate.format(date) });
         long removeid = -1;
+
         if (cursorCheck.moveToFirst()){
             Log.d("Repeat", "Found");
             removeid = cursorCheck.getLong(0);
@@ -175,42 +186,91 @@ public class Database extends SQLiteOpenHelper {
 
         //Delete Repeat if needed
         if(removeid != -1){
-            db.delete(EatTable.TABLE, EatTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
+            ContentValues replace = new ContentValues();
+            replace.put(EatTable.COL_CALORIES, calories);
+            db.update(EatTable.TABLE,replace, EatTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
+            return 1;
+        }else {
+
+            ContentValues values = new ContentValues();
+            values.put(EatTable.COL_DATE, formatDate.format(date));
+            values.put(EatTable.COL_CALORIES, calories);
+
+
+            long Id = db.insert(EatTable.TABLE, null, values);
+            Log.d("Database Insert Eat", "Returned a : " + Id);
+
+
+            return Id;
+        }
+    }
+
+    public void BuildEatData(){
+
+        SQLiteDatabase db = getReadableDatabase();
+
+
+        String dateTop = "2021-04";
+        Random r = new Random();
+        int low = 100;
+        int high = 20000;
+        for(int i = 1; i<MaxMonth; i++){
+            ContentValues values = new ContentValues();
+            int randomcalorie = r.nextInt(high-low)+low;
+            String datePlace = dateTop;
+            if(i < 10){
+                datePlace += "-0"+i;
+            }else{
+                datePlace += "-"+i;
+            }
+            Log.d("Generate Date", ""+ datePlace);
+            Log.d("Generate Calorie", ""+ randomcalorie);
+            values.put(EatTable.COL_DATE, datePlace);
+            values.put(EatTable.COL_CALORIES, randomcalorie);
+            long sucess = db.insert(EatTable.TABLE, null, values);
+            if(sucess != -1){
+                Log.d("Generate Eat", "Sucess");
+            }else{
+                Log.d("Generate Eat", "Fail");
+            }
         }
 
-        ContentValues values = new ContentValues();
-        values.put(EatTable.COL_DATE, formatDate.format(date));
-        values.put(EatTable.COL_CALORIES, calories);
+    }
 
 
+    public String[][] returnEat(){
+        SQLiteDatabase db = getReadableDatabase();
 
-        long Id = db.insert(EatTable.TABLE, null, values);
-        Log.d("Database Insert Eat","Returned a : "+Id);
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM");
+        Date date = new Date();
 
+        String[][] returnMonth = new String[MaxMonth][2];
+        String search = formatDate.format(date) + "%";
 
-        //TODO remove below
+        String sql = "select * from " + EatTable.TABLE + " where date LIKE ? ";
+        Cursor cursor = db.rawQuery(sql, new String[]{ search });
 
-        db = getReadableDatabase();
-
-        String sql = "select * from " + EatTable.TABLE + " ";
-        Cursor cursor = db.rawQuery(sql, new String[]{});
+        int i = 1;
         if (cursor.moveToFirst()) {
             do {
-                long id = cursor.getLong(0);
                 String time = cursor.getString(1);
                 String calorie = cursor.getString(2);
-                Log.d(TAG, "Returned = " + id + ", " + time + ", " + calorie );
+                returnMonth[i][0] = time;
+                returnMonth[i][1] = calorie;
+                i++;
+                if(i >=MaxMonth){
+                    break;
+                }
             } while (cursor.moveToNext());
         }
         cursor.close();
 
 
 
-
-
-        return Id;
+        return returnMonth;
 
     }
+
 
     public long addSleep(int wakehour, int wakemin, int wakeam, int sleephour, int sleepmin, int sleepam){
         //Check for repeats and delete so only one record per day
@@ -234,12 +294,6 @@ public class Database extends SQLiteOpenHelper {
 
         db = getWritableDatabase();
 
-        if(removeid != -1){
-            db.delete(SleepTable.TABLE, SleepTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
-        }
-
-
-
         ContentValues values = new ContentValues();
         values.put(SleepTable.COL_DATE, formatDate.format(date));
         values.put(SleepTable.COL_WAKEUPHOUR, wakehour);
@@ -249,11 +303,22 @@ public class Database extends SQLiteOpenHelper {
         values.put(SleepTable.COL_BEDTIMEMIN, sleepmin);
         values.put(SleepTable.COL_BEDTIMEAM, sleepam);
 
-        long Id = db.insert(SleepTable.TABLE, null, values);
-        Log.d("Database Insert Eat","Returned a : "+Id);
 
 
-        //TODO remove below
+        if(removeid != -1){
+            db.update(SleepTable.TABLE,values, SleepTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
+            return 1;
+        }else {
+
+            long Id = db.insert(SleepTable.TABLE, null, values);
+            Log.d("Database Insert Eat","Returned a : "+Id);
+
+
+            return Id;
+        }
+
+
+        /*TODO remove below
 
         db = getReadableDatabase();
 
@@ -276,8 +341,10 @@ public class Database extends SQLiteOpenHelper {
         cursor.close();
 
 
+         */
 
-        return Id;
+
+
 
     }
 
@@ -304,20 +371,52 @@ public class Database extends SQLiteOpenHelper {
 
         db = getWritableDatabase();
 
-        if(removeid != -1){
-            db.delete(ExcerciseTable.TABLE, ExcerciseTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
-        }
-
         ContentValues values = new ContentValues();
         values.put(ExcerciseTable.COL_DATE, formatDate.format(date));
         values.put(ExcerciseTable.COL_HOURS, hours);
         values.put(ExcerciseTable.COL_MINS, mins);
 
-        long Id = db.insert(ExcerciseTable.TABLE, null, values);
-        Log.d("Database Insert Eat","Returned a : "+Id);
+        if(removeid != -1){
+            db.update(ExcerciseTable.TABLE,values, ExcerciseTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
+            return 1;
+        }else{
+            long Id = db.insert(ExcerciseTable.TABLE, null, values);
+            Log.d("Database Insert Eat","Returned a : "+Id);
+
+            return Id;
+        }
 
 
-        //TODO remove below
+
+
+        /*
+
+        ContentValues values = new ContentValues();
+        values.put(SleepTable.COL_DATE, formatDate.format(date));
+        values.put(SleepTable.COL_WAKEUPHOUR, wakehour);
+        values.put(SleepTable.COL_WAKEUPMIN, wakemin);
+        values.put(SleepTable.COL_WAKEUPAM, wakeam);
+        values.put(SleepTable.COL_BEDTIMEHOUR, sleephour);
+        values.put(SleepTable.COL_BEDTIMEMIN, sleepmin);
+        values.put(SleepTable.COL_BEDTIMEAM, sleepam);
+
+
+
+        if(removeid != -1){
+            db.update(SleepTable.TABLE,values, SleepTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
+            return 1;
+        }else {
+
+            long Id = db.insert(SleepTable.TABLE, null, values);
+            Log.d("Database Insert Eat","Returned a : "+Id);
+
+
+            return Id;
+        }
+         */
+
+
+        /*TODO remove below
 
         db = getReadableDatabase();
 
@@ -337,8 +436,10 @@ public class Database extends SQLiteOpenHelper {
 
 
 
+         */
 
-        return Id;
+
+
 
     }
 
@@ -364,22 +465,30 @@ public class Database extends SQLiteOpenHelper {
 
         db = getWritableDatabase();
 
-        if(removeid != -1){
-            db.delete(SocialTable.TABLE, SocialTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
-        }
-
-        Log.d("Test inside insert", "hours: "+hours+" mins: "+mins+" numPpl: "+numppl);
         ContentValues values = new ContentValues();
         values.put(SocialTable.COL_DATE, formatDate.format(date));
         values.put(SocialTable.COL_HOURS, hours);
         values.put(SocialTable.COL_MINS, mins);
         values.put(SocialTable.COL_UNIQUENUM, numppl);
 
-        long Id = db.insert(SocialTable.TABLE, null, values);
-        Log.d("Database Insert Eat","Returned a : "+Id);
 
 
-        //TODO remove below
+        if(removeid != -1){
+            db.update(SocialTable.TABLE,values, SocialTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
+            return 1;
+        }else{
+            Log.d("Test inside insert", "hours: "+hours+" mins: "+mins+" numPpl: "+numppl);
+
+            long Id = db.insert(SocialTable.TABLE, null, values);
+            Log.d("Database Insert Eat","Returned a : "+Id);
+
+            return Id;
+        }
+
+
+
+
+        /*TODO remove below
 
         db = getReadableDatabase();
 
@@ -399,7 +508,9 @@ public class Database extends SQLiteOpenHelper {
 
 
 
-        return Id;
+         */
+
+
 
     }
 
@@ -425,19 +536,25 @@ public class Database extends SQLiteOpenHelper {
 
         db = getWritableDatabase();
 
-        if(removeid != -1){
-            db.delete(FinanceTable.TABLE, FinanceTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
-        }
-
         ContentValues values = new ContentValues();
         values.put(FinanceTable.COL_DATE, formatDate.format(date));
         values.put(FinanceTable.COL_MONEY, money);
 
-        long Id = db.insert(FinanceTable.TABLE, null, values);
-        Log.d("Database Insert Eat","Returned a : "+Id);
+
+        if(removeid != -1){
+            db.update(FinanceTable.TABLE,values, FinanceTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
+            return 1;
+        }else{
+            long Id = db.insert(FinanceTable.TABLE, null, values);
+            Log.d("Database Insert Eat","Returned a : "+Id);
+            return Id;
+        }
 
 
-        //TODO remove below
+
+
+
+        /*TODO remove below
 
         db = getReadableDatabase();
 
@@ -455,9 +572,11 @@ public class Database extends SQLiteOpenHelper {
 
 
 
+         */
 
 
-        return Id;
+
+
     }
 
     public long addMood(int mood){
@@ -482,19 +601,34 @@ public class Database extends SQLiteOpenHelper {
 
         db = getWritableDatabase();
 
-        if(removeid != -1){
-            db.delete(MoodTable.TABLE, MoodTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
-        }
-
         ContentValues values = new ContentValues();
         values.put(MoodTable.COL_DATE, formatDate.format(date));
         values.put(MoodTable.COL_MOOD, mood);
 
-        long Id = db.insert(MoodTable.TABLE, null, values);
-        Log.d("Database Insert Eat","Returned a : "+Id);
+        if(removeid != -1){
+            db.update(MoodTable.TABLE,values, MoodTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
+            return 1;
+        }else{
+            long Id = db.insert(MoodTable.TABLE, null, values);
+            Log.d("Database Insert Eat","Returned a : "+Id);
+            return Id;
+        }
+
+        /*
+                if(removeid != -1){
+            db.update(FinanceTable.TABLE,values, FinanceTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
+            return 1;
+        }else{
+            long Id = db.insert(FinanceTable.TABLE, null, values);
+            Log.d("Database Insert Eat","Returned a : "+Id);
+            return Id;
+        }
+         */
 
 
-        //TODO remove below
+
+
+        /*TODO remove below
 
         db = getReadableDatabase();
 
@@ -511,14 +645,13 @@ public class Database extends SQLiteOpenHelper {
         cursor.close();
 
 
+         */
 
 
 
-        return Id;
+
+
     }
 
-    /*
-        TODO create all get functions
-     */
 
 }

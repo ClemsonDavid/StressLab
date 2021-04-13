@@ -98,5 +98,13 @@ public class Settings extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void OnDevClick(View v){
+        Intent intent = new Intent(this, DeveloperArea.class);
+        startActivity(intent);
+
+
+
+    }
+
 
 }

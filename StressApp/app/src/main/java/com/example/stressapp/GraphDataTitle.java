@@ -47,7 +47,7 @@ public class GraphDataTitle extends AppCompatActivity {
 
     public void OptionSelect(View v) {
         String TypeInput = "";
-        Intent intent = new Intent(this, GraphDataInput.class);
+        Intent intent = new Intent(this, GraphDataGraph.class);
         switch (v.getId()) {
             case R.id.EatingHabitsButton:
                 TypeInput = "Eating";

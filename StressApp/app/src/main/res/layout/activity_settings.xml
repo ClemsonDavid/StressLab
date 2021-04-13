@@ -45,7 +45,15 @@
             android:onClick="OnStartClick"
             android:text="@string/confirm"
             />
-
+        <Button
+            android:id="@+id/Developer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/StartButton"
+            android:onClick="OnDevClick"
+            android:text="@string/DevButton"
+            />
 
 
     </RelativeLayout>

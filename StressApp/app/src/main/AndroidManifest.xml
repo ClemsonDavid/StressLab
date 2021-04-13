@@ -24,6 +24,17 @@
         <activity
             android:name=".DistractionInput"
             android:parentActivityName=".DistractionTitle"/>
+        <activity
+            android:name=".GraphDataTitle"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".GraphDataGraph"
+            android:parentActivityName=".GraphDataTitle"/>
+        <activity
+            android:name=".DeveloperArea"
+            android:parentActivityName=".Settings"/>
+
+
 
         <activity android:name=".MainActivity">
             <intent-filter>

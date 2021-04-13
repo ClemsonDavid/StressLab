@@ -11,6 +11,10 @@
     <string name="TitleCard">Lose The Stress</string>
 
 
+    <!-- Dev Strings -->
+    <string name="DevGenerateTable">Generate Database Values</string>
+    <string name="DevButton">Developer</string>
+
     <!-- Menu items -->
     <string name="settings">Settings</string>
     <string name="Home">Home</string>
@@ -21,6 +25,15 @@
 
     <!-- Graph for Data-->
     <string name="graphtitletitle">Choose Which Type of Data to See Graphed</string>
+
+
+    <!-- Graph Eating -->
+    <string name="EatingGraphTitle">Calorie Data</string>
+    <string name="DailyEatingBlurbFirst">You have taken in\u0020</string>
+    <string name="DailyEatingBlurbSecond">\u0020calories on\u0020</string>
+    <string name="NullEating">You have not put any data in for today!</string>
+    <string name="EatWeek">Calories Over the Last 7 Days</string>
+    <string name="EatMonth">Calories Over the Month</string>
 
 
     <!-- Input for Data -->
