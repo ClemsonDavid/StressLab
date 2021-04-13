@@ -30,6 +30,8 @@
         <!-- Background -->
         <item name="android:windowBackground">@drawable/redbackground</item>
 
+        <!-- EditTet -->
+        <item name="android:editTextColor">@color/RichRed</item>
 
         <item name="android:textColor">@color/RichRed</item>
         <!-- Button Styles-->

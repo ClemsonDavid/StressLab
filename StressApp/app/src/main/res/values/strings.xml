@@ -18,6 +18,12 @@
     <string name="Graphs">Graphs</string>
     <string name="Distractions">Distractions</string>
 
+
+    <!-- Graph for Data-->
+    <string name="graphtitletitle">Choose Which Type of Data to See Graphed</string>
+
+
+    <!-- Input for Data -->
     <!-- Input Data Buttons -->
     <string name="inputtitletitle">Choose Which Type of Data to Input</string>
     <string name="eating">Eating Habits</string>
@@ -26,6 +32,42 @@
     <string name="social">Social Interaction</string>
     <string name="finances">Finances</string>
     <string name="mental">Mental Health</string>
+    <string name="back">Back</string>
+
+    <!-- Eating -->
+    <string name="TitleEating">Enter How Many Calories You Took in Today</string>
+    <string name="DefaultEating">0</string>
+    <string name="DefaultDouble">0.00</string>
+    <string name="Breakfast">Breakfast:\u0020</string>
+    <string name="Lunch">Lunch:\u0020</string>
+    <string name="Dinner">Dinner:\u0020</string>
+
+    <!-- Sleeping -->
+    <string name="TitleSleeping">Enter When You Awoke and Slept</string>
+    <string name="DefaultSleeping">8:00</string>
+    <string name="DefaultWaking">6:00</string>
+    <string name="Woke_Up">Woke Up</string>
+    <string name="Slept">Bed Time</string>
+    <string name="am">a.m.</string>
+    <string name="pm">p.m.</string>
+
+    <!-- Exercise -->
+    <string name="TitleExercise">Enter How Many Hours or Minutes You Exercised Today</string>
+    <string name="Hours">Hours:\u0020</string>
+    <string name="Mins">Minutes:\u0020</string>
+    <string name="SubExcerciseHeading">Hour and minute input exceeding 24 or 59 respectively will be rounded down</string>
+
+    <!-- Social -->
+    <string name="TitleSocial">Enter How Many Hours or Minutes You Spoke With Someone Today</string>
+    <string name="HowManyPeople"># of Unique Interactions:\u0020</string>
+
+    <!-- Finances -->
+    <string name="TitleFinance">Enter How Much You Spent Today</string>
+    <string name="HowMuchDough">Money Spent:\u0020</string>
+    <string name="SubFinancesHeading">Any decimal place beyond the 0.00 will be rounded</string>
+
+    <!-- Mental -->
+    <string name="TitleMental">How Are You Feeling Today?</string>
 
     <string name="distractiontitletitle">Which Distraction Do You Need?</string>
     <string name="bubbles">Bubble Pop</string>

@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentManager;
 public class Settings extends AppCompatActivity {
     private static final String PREFS = "prefs";
     private String Theme;
+    private static final double MaxBright = 255.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,18 @@ public class Settings extends AppCompatActivity {
                 ImageSrc = R.drawable.settingsred;
                 break;
 
+        }
+        //Auto Switch to dark theme if screen brightness is < 30% of max brightness
+        try {
+            float curBrightnessValue=android.provider.Settings.System.getInt(
+                    getContentResolver(), android.provider.Settings.System.SCREEN_BRIGHTNESS);
+            if(curBrightnessValue < MaxBright * 0.3){
+                setTheme(R.style.Dark);
+                ImageSrc = R.drawable.settingswhite;
+            }
+
+        } catch (android.provider.Settings.SettingNotFoundException e) {
+            e.printStackTrace();
         }
         setContentView(R.layout.activity_settings);
 

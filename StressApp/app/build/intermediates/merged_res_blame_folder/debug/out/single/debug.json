@@ -4,6 +4,10 @@
         "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
+        "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_graphdatatitle.xml.flat",
+        "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_graphdatatitle.xml"
+    },
+    {
         "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_redbackground.xml.flat",
         "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\redbackground.xml"
     },
@@ -22,6 +26,10 @@
     {
         "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_icons8_ferris_wheel_48.png.flat",
         "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\drawable-v24\\icons8_ferris_wheel_48.png"
+    },
+    {
+        "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_neutral.png.flat",
+        "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\neutral.png"
     },
     {
         "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_darkbackground.xml.flat",
@@ -52,8 +60,12 @@
         "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\homewhite.png"
     },
     {
-        "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_inputdatainput.xml.flat",
-        "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_inputdatainput.xml"
+        "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_sleepinginput.xml.flat",
+        "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_sleepinginput.xml"
+    },
+    {
+        "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_sad.png.flat",
+        "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\sad.png"
     },
     {
         "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
@@ -62,6 +74,14 @@
     {
         "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_main.xml.flat",
         "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\fragment_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_socialinput.xml.flat",
+        "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_socialinput.xml"
+    },
+    {
+        "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_happy.png.flat",
+        "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\happy.png"
     },
     {
         "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
@@ -92,8 +112,16 @@
         "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\drawable-v24\\icons8_ferris_wheel_24.png"
     },
     {
+        "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_financesinput.xml.flat",
+        "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_financesinput.xml"
+    },
+    {
         "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_excerciseinput.xml.flat",
+        "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_excerciseinput.xml"
     },
     {
         "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_pngwing_com.png.flat",
@@ -106,6 +134,10 @@
     {
         "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_settings.xml.flat",
         "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_mentalinput.xml.flat",
+        "source": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_mentalinput.xml"
     },
     {
         "merged": "C:\\Users\\julia\\GitHub\\RoundTwo\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",

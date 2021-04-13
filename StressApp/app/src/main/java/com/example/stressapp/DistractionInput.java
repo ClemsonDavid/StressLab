@@ -63,7 +63,7 @@ public class DistractionInput extends AppCompatActivity {
                 break;
 
         }
-        setContentView(R.layout.activity_inputdatainput);
+        setContentView(R.layout.activity_inputdatatitle);
         Intent intent = getIntent();
         String Type = intent.getExtras().getString("Type");
         switch(Type){

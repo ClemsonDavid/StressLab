@@ -25,6 +25,10 @@
     <style name="BigTextTitle">
         <item name="android:textSize">50sp</item>
     </style>
+    <style name="SubTextTitle">
+        <item name="android:textSize">15sp</item>
+    </style>
+
 
 
 
