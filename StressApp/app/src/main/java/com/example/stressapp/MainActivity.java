@@ -114,6 +114,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
 
+            case R.id.Action_Distraction:
+                intent = new Intent(this, DistractionTitle.class);
+                startActivity(intent);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

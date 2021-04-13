@@ -13,6 +13,21 @@
     <color name="Cyan">#8bffff</color>
     <color name="LightGreen">#c5ff8b</color>
 
+    <array name="circle_colors">
+        <item>#54e2ad</item>
+        <item>#F5186d</item>
+        <item>#C218f5</item>
+        <item>#F51818</item>
+        <item>#F5f118</item>
+        <item>#Ffaa00</item>
+        <item>#00ff2c</item>
+        <item>#0012ff</item>
+        <item>#840eaf</item>
+        <item>#23941f</item>
+        <item>#0d0a6d</item>
+        <item>#6d480a</item>
+    </array>
+
 
 
 

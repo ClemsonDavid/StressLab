@@ -19,12 +19,11 @@
             android:name=".InputDataInput"
             android:parentActivityName=".InputDataTitle" />
         <activity
-            android:name=".GraphDataTitle"
-            android:parentActivityName=".MainActivity" />
+            android:name=".DistractionTitle"
+            android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".GraphDataInput"
-            android:parentActivityName=".GraphDataTitle" />
-
+            android:name=".DistractionInput"
+            android:parentActivityName=".DistractionTitle"/>
 
         <activity android:name=".MainActivity">
             <intent-filter>
