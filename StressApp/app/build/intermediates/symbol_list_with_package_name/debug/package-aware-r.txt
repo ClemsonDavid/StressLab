@@ -1721,6 +1721,7 @@ id ALT
 id Action_Distraction
 id Action_Graph
 id Action_Input
+id Action_Profile
 id Action_Settings
 id BOTTOM_END
 id BOTTOM_START
@@ -2573,6 +2574,7 @@ string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
 string pm
+string profile
 string profile_hint
 string profile_title
 string save
@@ -3443,6 +3445,7 @@ styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewPager2 android_orientation
 styleable ViewStubCompat android_id android_layout android_inflatedId
+xml file_paths
 xml standalone_badge
 xml standalone_badge_gravity_bottom_end
 xml standalone_badge_gravity_bottom_start

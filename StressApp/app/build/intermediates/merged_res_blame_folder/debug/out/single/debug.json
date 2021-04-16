@@ -160,6 +160,10 @@
         "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
+        "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\xml_file_paths.xml.flat",
+        "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\xml\\file_paths.xml"
+    },
+    {
         "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_eatinginput.xml.flat",
         "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_eatinginput.xml"
     },

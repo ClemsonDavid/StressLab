@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-48:12
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-64:12
+INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-64:12
+INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-64:12
+INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-64:12
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\julia\.gradle\caches\transforms-2\files-2.1\0b040ae6fd7360855475a012c5af81a6\material-1.3.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\julia\.gradle\caches\transforms-2\files-2.1\73327337a728e12c5c3cdecdb4b7e327\constraintlayout-2.0.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.2.0] C:\Users\julia\.gradle\caches\transforms-2\files-2.1\44b21666f861b2b454523071d69d07d7\appcompat-1.2.0\AndroidManifest.xml:17:1-24:12
@@ -44,25 +44,39 @@ MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\julia\.gradle
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\julia\.gradle\caches\transforms-2\files-2.1\1435e0b5216c3fd72a2d6579c29d3ee1\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\julia\.gradle\caches\transforms-2\files-2.1\035487676af6db782633ffbdc1d98b21\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\julia\.gradle\caches\transforms-2\files-2.1\3fd5b4b866d23b43b0e15439a0ee99e7\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-64:12
+INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-64:12
+INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-64:12
 	package
 		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:3:5-36
 		INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-48:12
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-64:12
 		INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-48:12
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:1-64:12
 		INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:2:11-69
+uses-feature#android.hardware.camera
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:5:5-84
+	android:required
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:5:58-81
+	android:name
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:5:19-57
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:6:5-81
+	android:name
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:6:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:7:22-77
 application
-ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:5:5-46:19
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:9:5-62:19
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\julia\.gradle\caches\transforms-2\files-2.1\0b040ae6fd7360855475a012c5af81a6\material-1.3.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\julia\.gradle\caches\transforms-2\files-2.1\0b040ae6fd7360855475a012c5af81a6\material-1.3.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\julia\.gradle\caches\transforms-2\files-2.1\73327337a728e12c5c3cdecdb4b7e327\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
@@ -74,79 +88,101 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\ju
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.3.1] C:\Users\julia\.gradle\caches\transforms-2\files-2.1\8dbd859d1cd89239b42e7382b4fc40d7\core-1.3.1\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:10:9-35
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:14:9-35
 	android:label
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:8:9-41
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:12:9-41
 	android:roundIcon
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:9:9-54
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:13:9-54
 	android:icon
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:7:9-43
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:11:9-43
 	android:allowBackup
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:10:9-35
 	android:theme
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:11:9-41
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:15:9-41
+provider#androidx.core.content.FileProvider
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:16:9-24:20
+	android:grantUriPermissions
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:20:13-47
+	android:authorities
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:18:13-69
+	android:exported
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:19:13-37
+	android:name
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:17:13-62
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:21:13-23:54
+	android:resource
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:23:17-51
+	android:name
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:22:17-67
 activity#com.example.stressapp.Settings
-ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:12:9-14:58
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:25:9-27:58
 	android:parentActivityName
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:14:13-55
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:27:13-55
 	android:name
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:13:13-37
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:26:13-37
 activity#com.example.stressapp.InputDataTitle
-ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:15:9-17:58
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:28:9-30:58
 	android:parentActivityName
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:17:13-55
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:30:13-55
 	android:name
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:16:13-43
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:29:13-43
 activity#com.example.stressapp.InputDataInput
-ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:18:9-20:60
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:31:9-33:60
 	android:parentActivityName
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:20:13-57
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:33:13-57
 	android:name
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:19:13-43
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:32:13-43
 activity#com.example.stressapp.DistractionTitle
-ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:21:9-23:57
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:34:9-36:57
 	android:parentActivityName
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:23:13-55
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:36:13-55
 	android:name
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:22:13-45
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:35:13-45
 activity#com.example.stressapp.DistractionInput
-ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:24:9-26:61
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:37:9-39:61
 	android:parentActivityName
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:26:13-59
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:39:13-59
 	android:name
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:25:13-45
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:38:13-45
+activity#com.example.stressapp.ProfileTitle
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:40:9-42:57
+	android:parentActivityName
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:42:13-55
+	android:name
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:41:13-41
 activity#com.example.stressapp.GraphDataTitle
-ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:27:9-29:57
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:43:9-45:57
 	android:parentActivityName
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:29:13-55
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:45:13-55
 	android:name
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:28:13-43
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:44:13-43
 activity#com.example.stressapp.GraphDataGraph
-ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:30:9-32:59
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:46:9-48:59
 	android:parentActivityName
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:32:13-57
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:48:13-57
 	android:name
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:31:13-43
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:47:13-43
 activity#com.example.stressapp.DeveloperArea
-ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:33:9-35:53
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:49:9-51:53
 	android:parentActivityName
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:35:13-51
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:51:13-51
 	android:name
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:34:13-42
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:50:13-42
 activity#com.example.stressapp.MainActivity
-ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:39:9-45:20
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:55:9-61:20
 	android:name
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:39:19-47
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:55:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:40:13-44:29
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:56:13-60:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:41:17-69
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:57:17-69
 	android:name
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:41:25-66
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:57:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:43:17-77
+ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:59:17-77
 	android:name
-		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:43:27-74
+		ADDED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml:59:27-74
 uses-sdk
 INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\julia\GitHub\FreshPull\StressLab\StressApp\app\src\main\AndroidManifest.xml

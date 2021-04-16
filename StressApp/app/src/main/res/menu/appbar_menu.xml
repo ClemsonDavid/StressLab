@@ -2,6 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:id="@+id/Action_Profile"
+        android:title="@string/profile"
+        android:icon="@drawable/baseline_perm_identity_white_48"
+        android:iconTint="@color/white"
+        app:showAsAction="ifRoom"/>
+
     <item android:id="@+id/Action_Settings"
         android:title="@string/settings"
         android:icon="@drawable/settingswhite"

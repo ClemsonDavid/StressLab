@@ -148,6 +148,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
 
+            case R.id.Action_Profile:
+                intent = new Intent(this, ProfileTitle.class);
+                startActivity(intent);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
