@@ -56,8 +56,11 @@ public class DeveloperArea extends AppCompatActivity {
 
     public void OnGenerateClick(View v){
         db.BuildEatData();
-
-
+        db.BuildSleepData();
+        db.BuildExcerciseData();
+        db.BuildFinanceData();
+        db.BuildSocialData();
+        db.BuildMoodData();
 
     }
 

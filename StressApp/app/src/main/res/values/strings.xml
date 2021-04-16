@@ -35,6 +35,49 @@
     <string name="EatWeek">Calories Over the Last 7 Days</string>
     <string name="EatMonth">Calories Over the Month</string>
 
+    <!-- Graph Sleeping -->
+    <string name="SleepGraphTitle">Sleep Data</string>
+    <string name="DailySleepBlurbFirst">You have slept\u0020</string>
+    <string name="DailySleepBlurbSecond">\u0020hours on\u0020</string>
+    <string name="NullSleep">You have not put any data in for today!</string>
+    <string name="SleepWeek">Sleep Hours Over the Last 7 Days</string>
+    <string name="SleepMonth">Sleep Hours Over the Month</string>
+
+    <!-- Graph Excercise -->
+    <string name="ExcerciseGraphTitle">Exercise Data</string>
+    <string name="DailyExcerciseBlurbFirst">You have exercised\u0020</string>
+    <string name="DailyExcerciseBlurbSecond">\u0020hours on\u0020</string>
+    <string name="NullExcercise">You have not put any data in for today!</string>
+    <string name="ExcerciseWeek">Exercise Hours Over the Last 7 Days</string>
+    <string name="ExcerciseMonth">Exercise Hours Over the Month</string>
+
+    <!-- Graph Finance -->
+    <string name="FinanceGraphTitle">Finance Data</string>
+    <string name="DailyFinanceBlurbFirst">You have spent\u0020$</string>
+    <string name="DailyFinanceBlurbSecond">\u0020on\u0020</string>
+    <string name="NullFinance">You have not put any data in for today!</string>
+    <string name="FinanceWeek">$$$ Spent Over the Last 7 Days</string>
+    <string name="FinanceMonth">$$$ Spent Over the Month</string>
+
+    <!-- Graph Social -->
+    <string name="SocialGraphTitle">Social Data</string>
+    <string name="DailySocialBlurbFirst">You have socialized\u0020</string>
+    <string name="DailySocialBlurbSecond">\u0020hours on\u0020</string>
+    <string name="NullSocial">You have not put any data in for today!</string>
+    <string name="SocialWeek">Social Hours Over the Last 7 Days</string>
+    <string name="SocialMonth">Social Hours Over the Month</string>
+    <string name="SocialWeek2">Unique Interactions Over the Last 7 Days</string>
+    <string name="SocialMonth2">Unique Interactions Over the Month</string>
+
+    <!-- Graph Mood -->
+    <string name="MoodGraphTitle">Mood Data</string>
+    <string name="DailyMoodBlurbFirst">You have felt\u0020</string>
+    <string name="DailyMoodBlurbSecond">\u0020 on\u0020</string>
+    <string name="NullMood">You have not put any data in for today!</string>
+    <string name="MoodWeek">Mood Over the Last 7 Days</string>
+    <string name="MoodMonth">Mood Over the Month</string>
+
+
 
     <!-- Input for Data -->
     <!-- Input Data Buttons -->

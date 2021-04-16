@@ -53,12 +53,7 @@ public class Database extends SQLiteOpenHelper {
         private static final String TABLE = "sleep";
         private static final String COL_ID = "_id";
         private static final String COL_DATE = "date";
-        private static final String COL_WAKEUPHOUR = "wakeuphour";
-        private static final String COL_BEDTIMEHOUR = "bedtimehour";
-        private static final String COL_WAKEUPMIN = "wakeupmin";
-        private static final String COL_BEDTIMEMIN = "bedtimemin";
-        private static final String COL_WAKEUPAM = "wakeupAM";
-        private static final String COL_BEDTIMEAM = "bedtimeAM";
+        private static final String COL_TOTALSLEEP = "totalsleep";
 
 
     }
@@ -68,8 +63,7 @@ public class Database extends SQLiteOpenHelper {
         private static final String TABLE = "exercise";
         private static final String COL_ID = "_id";
         private static final String COL_DATE = "date";
-        private static final String COL_HOURS = "hours";
-        private static final String COL_MINS = "minutes";
+        private static final String COL_TOTALEXCERCISE = "totalexercise";
     }
 
     //Database class for SocialTable
@@ -77,8 +71,7 @@ public class Database extends SQLiteOpenHelper {
         private static final String TABLE = "social";
         private static final String COL_ID = "_id";
         private static final String COL_DATE = "date";
-        private static final String COL_HOURS = "hours";
-        private static final String COL_MINS = "minutes";
+        private static final String COL_TOTALSOCIAL = "totalsocial";
         private static final String COL_UNIQUENUM = "people";
     }
     //Database class for FinanceTable
@@ -110,24 +103,17 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("create table " + SleepTable.TABLE + " (" +
                 SleepTable.COL_ID + " integer primary key autoincrement, " +
                 SleepTable.COL_DATE + " text, " +
-                SleepTable.COL_WAKEUPHOUR + " integer, " +
-                SleepTable.COL_WAKEUPMIN + " integer, " +
-                SleepTable.COL_WAKEUPAM + " integer, " +
-                SleepTable.COL_BEDTIMEHOUR + " integer, " +
-                SleepTable.COL_BEDTIMEMIN + " integer, " +
-                SleepTable.COL_BEDTIMEAM + " integer)");
+                SleepTable.COL_TOTALSLEEP + " double)");
         //Create ExerciseTable
         db.execSQL("create table " + ExcerciseTable.TABLE + " (" +
                 ExcerciseTable.COL_ID + " integer primary key autoincrement, " +
                 ExcerciseTable.COL_DATE + " text, " +
-                ExcerciseTable.COL_HOURS + " integer, " +
-                ExcerciseTable.COL_MINS + " integer)");
+                ExcerciseTable.COL_TOTALEXCERCISE + " double)");
         //Create SocialTable
         db.execSQL("create table " + SocialTable.TABLE + " (" +
                 SocialTable.COL_ID + " integer primary key autoincrement, " +
                 SocialTable.COL_DATE + " text, " +
-                SocialTable.COL_HOURS + " integer, " +
-                SocialTable.COL_MINS + " integer, " +
+                SocialTable.COL_TOTALSOCIAL + " double, " +
                 SocialTable.COL_UNIQUENUM + " integer)");
         //Create FinanceTable
         db.execSQL("create table " + FinanceTable.TABLE + " (" +
@@ -157,10 +143,9 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    /*
-        TODO create all Add functions
-     */
 
+
+    //All Eat functions
     public long addEat(int calories){
 
         //Check for repeats and delete so only one record per day
@@ -180,7 +165,7 @@ public class Database extends SQLiteOpenHelper {
         }else{
             Log.d("Repeat", "Not Found");
         }
-
+        cursorCheck.close();
 
         db = getWritableDatabase();
 
@@ -237,7 +222,6 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
-
     public String[][] returnEat(){
         SQLiteDatabase db = getReadableDatabase();
 
@@ -272,7 +256,8 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
-    public long addSleep(int wakehour, int wakemin, int wakeam, int sleephour, int sleepmin, int sleepam){
+    //All Sleep Functions
+    public long addSleep(double TotalSleep){
         //Check for repeats and delete so only one record per day
         SQLiteDatabase db = getReadableDatabase();
 
@@ -289,19 +274,15 @@ public class Database extends SQLiteOpenHelper {
         }else{
             Log.d("Repeat", "Not Found");
         }
-
+        cursorCheck.close();
 
 
         db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(SleepTable.COL_DATE, formatDate.format(date));
-        values.put(SleepTable.COL_WAKEUPHOUR, wakehour);
-        values.put(SleepTable.COL_WAKEUPMIN, wakemin);
-        values.put(SleepTable.COL_WAKEUPAM, wakeam);
-        values.put(SleepTable.COL_BEDTIMEHOUR, sleephour);
-        values.put(SleepTable.COL_BEDTIMEMIN, sleepmin);
-        values.put(SleepTable.COL_BEDTIMEAM, sleepam);
+        values.put(SleepTable.COL_TOTALSLEEP, TotalSleep);
+
 
 
 
@@ -318,38 +299,75 @@ public class Database extends SQLiteOpenHelper {
         }
 
 
-        /*TODO remove below
 
-        db = getReadableDatabase();
+    }
 
-        String sql = "select * from " + SleepTable.TABLE + " ";
-        Cursor cursor = db.rawQuery(sql, new String[]{});
+    public void BuildSleepData(){
+
+        SQLiteDatabase db = getReadableDatabase();
+
+
+        String dateTop = "2021-04";
+        Random r = new Random();
+        int low = 4;
+        int high = 12;
+        for(int i = 1; i<MaxMonth; i++){
+            ContentValues values = new ContentValues();
+            int randomsleep = r.nextInt(high-low)+low;
+            String datePlace = dateTop;
+            if(i < 10){
+                datePlace += "-0"+i;
+            }else{
+                datePlace += "-"+i;
+            }
+            Log.d("Generate Date", ""+ datePlace);
+            Log.d("Generate Sleep", ""+ randomsleep);
+            values.put(SleepTable.COL_DATE, datePlace);
+            values.put(SleepTable.COL_TOTALSLEEP, randomsleep);
+            long success = db.insert(SleepTable.TABLE, null, values);
+            if(success != -1){
+                Log.d("Generate Sleep", "Sucess");
+            }else{
+                Log.d("Generate Sleep", "Fail");
+            }
+        }
+    }
+
+    public String[][] returnSleep(){
+        SQLiteDatabase db = getReadableDatabase();
+
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM");
+        Date date = new Date();
+
+        String[][] returnMonth = new String[MaxMonth][2];
+        String search = formatDate.format(date) + "%";
+
+        String sql = "select * from " + SleepTable.TABLE + " where date LIKE ? ";
+        Cursor cursor = db.rawQuery(sql, new String[]{ search });
+
+        int i = 1;
         if (cursor.moveToFirst()) {
             do {
-                long id = cursor.getLong(0);
                 String time = cursor.getString(1);
-                String COL_WAKEUPHOUR = cursor.getString(2);
-                String COL_WAKEUPMIN = cursor.getString(3);
-                String COL_WAKEUPAM = cursor.getString(4);
-                String COL_BEDTIMEHOUR = cursor.getString(5);
-                String COL_BEDTIMEMIN = cursor.getString(6);
-                String COL_BEDTIMEAM = cursor.getString(7);
-                Log.d(TAG, "Returned = " + id + ", DATE " + time + ", COL_WAKEUPHOUR " + COL_WAKEUPHOUR + ", COL_WAKEUPMIN " +COL_WAKEUPMIN+ "," +
-                        "COL_WAKEUPAM " +COL_WAKEUPAM+", COL_BEDTIMEHOUR "+COL_BEDTIMEHOUR+", COL_BEDTIMEMIN" +COL_BEDTIMEMIN+", COL_BEDTIMEAM"+COL_BEDTIMEAM);
+                String TotalSleep = cursor.getString(2);
+                returnMonth[i][0] = time;
+                returnMonth[i][1] = TotalSleep;
+                i++;
+                if(i >=MaxMonth){
+                    break;
+                }
             } while (cursor.moveToNext());
         }
         cursor.close();
 
 
-         */
 
-
-
+        return returnMonth;
 
     }
 
 
-    public long addExcercise(int hours, int mins){
+    public long addExcercise(double adjustedExcercise){
         //Check for repeats and delete so only one record per day
         SQLiteDatabase db = getReadableDatabase();
 
@@ -373,8 +391,7 @@ public class Database extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(ExcerciseTable.COL_DATE, formatDate.format(date));
-        values.put(ExcerciseTable.COL_HOURS, hours);
-        values.put(ExcerciseTable.COL_MINS, mins);
+        values.put(ExcerciseTable.COL_TOTALEXCERCISE, adjustedExcercise);
 
         if(removeid != -1){
             db.update(ExcerciseTable.TABLE,values, ExcerciseTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
@@ -389,61 +406,77 @@ public class Database extends SQLiteOpenHelper {
 
 
 
-        /*
-
-        ContentValues values = new ContentValues();
-        values.put(SleepTable.COL_DATE, formatDate.format(date));
-        values.put(SleepTable.COL_WAKEUPHOUR, wakehour);
-        values.put(SleepTable.COL_WAKEUPMIN, wakemin);
-        values.put(SleepTable.COL_WAKEUPAM, wakeam);
-        values.put(SleepTable.COL_BEDTIMEHOUR, sleephour);
-        values.put(SleepTable.COL_BEDTIMEMIN, sleepmin);
-        values.put(SleepTable.COL_BEDTIMEAM, sleepam);
 
 
+    }
 
-        if(removeid != -1){
-            db.update(SleepTable.TABLE,values, SleepTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
-            return 1;
-        }else {
+    public void BuildExcerciseData(){
 
-            long Id = db.insert(SleepTable.TABLE, null, values);
-            Log.d("Database Insert Eat","Returned a : "+Id);
+        SQLiteDatabase db = getReadableDatabase();
 
 
-            return Id;
+        String dateTop = "2021-04";
+        Random r = new Random();
+        int low = 0;
+        int high = 6;
+        for(int i = 1; i<MaxMonth; i++){
+            ContentValues values = new ContentValues();
+            int randomexcercise = r.nextInt(high-low)+low;
+            String datePlace = dateTop;
+            if(i < 10){
+                datePlace += "-0"+i;
+            }else{
+                datePlace += "-"+i;
+            }
+            Log.d("Generate Date", ""+ datePlace);
+            Log.d("Generate randomexcercise", ""+ randomexcercise);
+            values.put(ExcerciseTable.COL_DATE, datePlace);
+            values.put(ExcerciseTable.COL_TOTALEXCERCISE, randomexcercise);
+            long success = db.insert(ExcerciseTable.TABLE, null, values);
+            if(success != -1){
+                Log.d("Generate ExcerciseTable", "Sucess");
+            }else{
+                Log.d("Generate ExcerciseTable", "Fail");
+            }
         }
-         */
 
+    }
 
-        /*TODO remove below
+    public String[][] returnExcercise(){
+        SQLiteDatabase db = getReadableDatabase();
 
-        db = getReadableDatabase();
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM");
+        Date date = new Date();
 
-        String sql = "select * from " + ExcerciseTable.TABLE + " ";
-        Cursor cursor = db.rawQuery(sql, new String[]{});
+        String[][] returnMonth = new String[MaxMonth][2];
+        String search = formatDate.format(date) + "%";
+
+        String sql = "select * from " + ExcerciseTable.TABLE + " where date LIKE ? ";
+        Cursor cursor = db.rawQuery(sql, new String[]{ search });
+
+        int i = 1;
         if (cursor.moveToFirst()) {
             do {
-                long id = cursor.getLong(0);
                 String time = cursor.getString(1);
-                String COL_HOURS = cursor.getString(2);
-                String COL_MINS = cursor.getString(3);
-                Log.d(TAG, "Returned = " + id + ", " + time + ", COL_HOURS " + COL_HOURS +", COL_MINS "+COL_MINS);
+                String TotalExcercise = cursor.getString(2);
+                returnMonth[i][0] = time;
+                returnMonth[i][1] = TotalExcercise;
+                i++;
+                if(i >=MaxMonth){
+                    break;
+                }
             } while (cursor.moveToNext());
         }
         cursor.close();
 
 
 
-
-         */
-
-
-
-
+        return returnMonth;
     }
 
-    public long addSocial(int hours, int mins, int numppl){
+
+
+    public long addSocial(double adjustedSocial, int numppl){
         //Check for repeats and delete so only one record per day
         SQLiteDatabase db = getReadableDatabase();
 
@@ -467,8 +500,7 @@ public class Database extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(SocialTable.COL_DATE, formatDate.format(date));
-        values.put(SocialTable.COL_HOURS, hours);
-        values.put(SocialTable.COL_MINS, mins);
+        values.put(SocialTable.COL_TOTALSOCIAL, adjustedSocial);
         values.put(SocialTable.COL_UNIQUENUM, numppl);
 
 
@@ -477,8 +509,6 @@ public class Database extends SQLiteOpenHelper {
             db.update(SocialTable.TABLE,values, SocialTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
             return 1;
         }else{
-            Log.d("Test inside insert", "hours: "+hours+" mins: "+mins+" numPpl: "+numppl);
-
             long Id = db.insert(SocialTable.TABLE, null, values);
             Log.d("Database Insert Eat","Returned a : "+Id);
 
@@ -487,30 +517,74 @@ public class Database extends SQLiteOpenHelper {
 
 
 
+    }
 
-        /*TODO remove below
+    public void BuildSocialData(){
 
-        db = getReadableDatabase();
+        SQLiteDatabase db = getReadableDatabase();
 
-        String sql = "select * from " + SocialTable.TABLE + " ";
-        Cursor cursor = db.rawQuery(sql, new String[]{});
+
+        String dateTop = "2021-04";
+        Random r = new Random();
+        int low = 0;
+        int high = 8;
+        for(int i = 1; i<MaxMonth; i++){
+            ContentValues values = new ContentValues();
+            int randomSocial = r.nextInt(high-low)+low;
+            int randomUnique = r.nextInt(high-low)+low;
+            String datePlace = dateTop;
+            if(i < 10){
+                datePlace += "-0"+i;
+            }else{
+                datePlace += "-"+i;
+            }
+            Log.d("Generate Date", ""+ datePlace);
+            Log.d("Generate randomSocial", ""+ randomSocial);
+            values.put(SocialTable.COL_DATE, datePlace);
+            values.put(SocialTable.COL_TOTALSOCIAL, randomSocial);
+            values.put(SocialTable.COL_UNIQUENUM, randomUnique);
+            long success = db.insert(SocialTable.TABLE, null, values);
+            if(success != -1){
+                Log.d("Generate SocialTable", "Sucess");
+            }else{
+                Log.d("Generate SocialTable", "Fail");
+            }
+        }
+
+    }
+
+    public String[][] returnSocial(){
+        SQLiteDatabase db = getReadableDatabase();
+
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM");
+        Date date = new Date();
+
+        String[][] returnMonth = new String[MaxMonth][3];
+        String search = formatDate.format(date) + "%";
+
+        String sql = "select * from " + SocialTable.TABLE + " where date LIKE ? ";
+        Cursor cursor = db.rawQuery(sql, new String[]{ search });
+
+        int i = 1;
         if (cursor.moveToFirst()) {
             do {
-                long id = cursor.getLong(0);
                 String time = cursor.getString(1);
-                String COL_HOURS = cursor.getString(2);
-                String COL_MINS = cursor.getString(3);
-                String COL_UNIQUENUM = cursor.getString(4);
-                Log.d(TAG, "Returned = " + id + ", " + time + ", COL_HOURS " + COL_HOURS +", COL_MINS "+COL_MINS+", COL_UNIQUENUM "+COL_UNIQUENUM);
+                String TotalSocial = cursor.getString(2);
+                String UniqueSocial = cursor.getString(3);
+                returnMonth[i][0] = time;
+                returnMonth[i][1] = TotalSocial;
+                returnMonth[i][2] = UniqueSocial;
+                i++;
+                if(i >=MaxMonth){
+                    break;
+                }
             } while (cursor.moveToNext());
         }
         cursor.close();
 
 
 
-         */
-
-
+        return returnMonth;
 
     }
 
@@ -578,6 +652,72 @@ public class Database extends SQLiteOpenHelper {
 
 
     }
+
+    public void BuildFinanceData(){
+
+        SQLiteDatabase db = getReadableDatabase();
+
+
+        String dateTop = "2021-04";
+        Random r = new Random();
+        int low = 0;
+        int high = 2000;
+        for(int i = 1; i<MaxMonth; i++){
+            ContentValues values = new ContentValues();
+            int randomFinance = r.nextInt(high-low)+low;
+            String datePlace = dateTop;
+            if(i < 10){
+                datePlace += "-0"+i;
+            }else{
+                datePlace += "-"+i;
+            }
+            Log.d("Generate Date", ""+ datePlace);
+            Log.d("Generate randomFinance", ""+ randomFinance);
+            values.put(FinanceTable.COL_DATE, datePlace);
+            values.put(FinanceTable.COL_MONEY, randomFinance);
+            long success = db.insert(FinanceTable.TABLE, null, values);
+            if(success != -1){
+                Log.d("Generate FinanceTable", "Sucess");
+            }else{
+                Log.d("Generate FinanceTable", "Fail");
+            }
+        }
+
+    }
+
+    public String[][] returnFinance(){
+        SQLiteDatabase db = getReadableDatabase();
+
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM");
+        Date date = new Date();
+
+        String[][] returnMonth = new String[MaxMonth][2];
+        String search = formatDate.format(date) + "%";
+
+        String sql = "select * from " + FinanceTable.TABLE + " where date LIKE ? ";
+        Cursor cursor = db.rawQuery(sql, new String[]{ search });
+
+        int i = 1;
+        if (cursor.moveToFirst()) {
+            do {
+                String time = cursor.getString(1);
+                String TotalFinance = cursor.getString(2);
+                returnMonth[i][0] = time;
+                returnMonth[i][1] = TotalFinance;
+                i++;
+                if(i >=MaxMonth){
+                    break;
+                }
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+
+
+        return returnMonth;
+    }
+
+
 
     public long addMood(int mood){
         //Check for repeats and delete so only one record per day
@@ -652,6 +792,71 @@ public class Database extends SQLiteOpenHelper {
 
 
     }
+
+    public void BuildMoodData(){
+
+        SQLiteDatabase db = getReadableDatabase();
+
+
+        String dateTop = "2021-04";
+        Random r = new Random();
+        int low = 0;
+        int high = 3;
+        for(int i = 1; i<MaxMonth; i++){
+            ContentValues values = new ContentValues();
+            int randomMood = r.nextInt(high-low)+low;
+            String datePlace = dateTop;
+            if(i < 10){
+                datePlace += "-0"+i;
+            }else{
+                datePlace += "-"+i;
+            }
+            Log.d("Generate Date", ""+ datePlace);
+            Log.d("Generate randomMood", ""+ randomMood);
+            values.put(MoodTable.COL_DATE, datePlace);
+            values.put(MoodTable.COL_MOOD, randomMood);
+            long success = db.insert(MoodTable.TABLE, null, values);
+            if(success != -1){
+                Log.d("Generate MoodTable", "Sucess");
+            }else{
+                Log.d("Generate MoodTable", "Fail");
+            }
+        }
+
+    }
+
+    public String[][] returnMood(){
+        SQLiteDatabase db = getReadableDatabase();
+
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM");
+        Date date = new Date();
+
+        String[][] returnMonth = new String[MaxMonth][2];
+        String search = formatDate.format(date) + "%";
+
+        String sql = "select * from " + MoodTable.TABLE + " where date LIKE ? ";
+        Cursor cursor = db.rawQuery(sql, new String[]{ search });
+
+        int i = 1;
+        if (cursor.moveToFirst()) {
+            do {
+                String time = cursor.getString(1);
+                String TotalMood = cursor.getString(2);
+                returnMonth[i][0] = time;
+                returnMonth[i][1] = TotalMood;
+                i++;
+                if(i >=MaxMonth){
+                    break;
+                }
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+
+
+        return returnMonth;
+    }
+
 
 
 }

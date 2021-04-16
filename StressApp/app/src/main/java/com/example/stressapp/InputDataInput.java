@@ -150,38 +150,32 @@ public class InputDataInput extends AppCompatActivity {
             sleepHour = SleepPicker.getHour();
             wakeMin = WakePicker.getMinute();
             sleepMin = SleepPicker.getMinute();
-            //Get Am or Pm
-            if(wakeHour > 12){
-                wakeHour -= 12;
-                wakeAM = 0;
-            }else{
-                wakeAM = 1;
-            }
-            if(sleepHour > 12){
-                sleepHour -= 12;
-                sleepAM = 0;
-            }else{
-                sleepAM = 1;
+
+            double adjustedWake = wakeHour + (wakeMin/60.0);
+            double adjustedSleep = sleepHour + (sleepMin/60.0);
+            double TotalSleep = adjustedSleep - adjustedWake;
+            if(TotalSleep <0){
+                TotalSleep *= -1;
             }
 
-        long success = db.addSleep(wakeHour, wakeMin, wakeAM, sleepHour, sleepMin, sleepAM);
-        Log.d("After DB Insert", "");
+            long success = db.addSleep(TotalSleep);
+            Log.d("After DB Insert", "");
 
-        if(success != -1){
-            Context context = getApplicationContext();
-            CharSequence text = "Input Recorded!";
-            int duration = Toast.LENGTH_SHORT;
+            if(success != -1){
+                Context context = getApplicationContext();
+                CharSequence text = "Input Recorded!";
+                int duration = Toast.LENGTH_SHORT;
 
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }else{
-            Context context = getApplicationContext();
-            CharSequence text = "Error in Input!";
-            int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }else{
+                Context context = getApplicationContext();
+                CharSequence text = "Error in Input!";
+                int duration = Toast.LENGTH_SHORT;
 
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
 
 
 
@@ -204,7 +198,12 @@ public class InputDataInput extends AppCompatActivity {
             mins = 59;
         }
 
-        long success = db.addExcercise(hours, mins);
+
+        double adjustedExcercise = hours + (mins/60.0);
+
+
+
+        long success = db.addExcercise(adjustedExcercise);
         Log.d("After DB Insert", "");
 
         if(success != -1){
@@ -249,8 +248,10 @@ public class InputDataInput extends AppCompatActivity {
             mins = 59;
         }
 
+        double adjustedSocial = hours + (mins/60.0);
+
         Log.d("Test before insert", "hours: "+hours+" mins: "+mins+" numPpl: "+numPpl);
-        long success = db.addSocial(hours, mins, numPpl);
+        long success = db.addSocial(adjustedSocial, numPpl);
         Log.d("After DB Insert", "");
 
         if(success != -1){
