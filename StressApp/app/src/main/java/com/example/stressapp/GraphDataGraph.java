@@ -784,15 +784,38 @@ public class GraphDataGraph extends AppCompatActivity {
                 Date Mooddate = new Date();
                 Log.d("Today",""+MoodformatDate.format(Mooddate));
                 int MoodToday = Integer.parseInt(MoodformatDate.format(Mooddate));
+                String howyoufelt = "";
                 if(MoodmonthlyData[1][0] == null){
                     MoodDailyText.setText(R.string.NullMood);
                     break;
                 }else if(MoodmonthlyData[2][0] == null){
-                    String MoodDaily = getString(R.string.DailyMoodBlurbFirst) + "" + MoodmonthlyData[1][1] + getString(R.string.DailyMoodBlurbSecond) + " " + MoodmonthlyData[1][0];
+                    switch (MoodmonthlyData[1][1]){
+                        case "0":
+                            howyoufelt += "sad";
+                            break;
+                        case "1":
+                            howyoufelt += "neutral";
+                            break;
+                        case "2":
+                            howyoufelt += "happy";
+                            break;
+                    }
+                    String MoodDaily = getString(R.string.DailyMoodBlurbFirst) + "" + howyoufelt + getString(R.string.DailyMoodBlurbSecond) + " " + MoodmonthlyData[1][0];
                     MoodDailyText.setText(MoodDaily);
                     break;
                 }else {
-                    String MoodDaily = getString(R.string.DailyMoodBlurbFirst) + "" + MoodmonthlyData[MoodToday][1] + getString(R.string.DailyMoodBlurbSecond) + " " + MoodmonthlyData[MoodToday][0];
+                    switch (MoodmonthlyData[1][1]){
+                        case "0":
+                            howyoufelt += "sad";
+                            break;
+                        case "1":
+                            howyoufelt += "neutral";
+                            break;
+                        case "2":
+                            howyoufelt += "happy";
+                            break;
+                    }
+                    String MoodDaily = getString(R.string.DailyMoodBlurbFirst) + "" + howyoufelt + getString(R.string.DailyMoodBlurbSecond) + " " + MoodmonthlyData[MoodToday][0];
                     MoodDailyText.setText(MoodDaily);
                 }
                 //Weekly Mood Data BARRRRRRRRCHARRRRT

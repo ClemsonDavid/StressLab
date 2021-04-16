@@ -126,6 +126,125 @@ public class Database extends SQLiteOpenHelper {
                 MoodTable.COL_DATE + " text, " +
                 MoodTable.COL_MOOD + " integer)");
 
+        //Have 0th values for the month
+
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM");
+        Date date = new Date();
+        String dateTop = formatDate.format(date);
+        for(int i = 1; i<MaxMonth; i++){
+            ContentValues values = new ContentValues();
+            String datePlace = dateTop;
+            if(i < 10){
+                datePlace += "-0"+i;
+            }else{
+                datePlace += "-"+i;
+            }
+            Log.d("Generate Date", ""+ datePlace);
+            values.put(EatTable.COL_DATE, datePlace);
+            values.put(EatTable.COL_CALORIES, 0);
+            long success = db.insert(EatTable.TABLE, null, values);
+            if(success != -1){
+                Log.d("Generate MoodTable", "Sucess");
+            }else{
+                Log.d("Generate MoodTable", "Fail");
+            }
+        }
+
+        for(int i = 1; i<MaxMonth; i++){
+            ContentValues values = new ContentValues();
+            String datePlace = dateTop;
+            if(i < 10){
+                datePlace += "-0"+i;
+            }else{
+                datePlace += "-"+i;
+            }
+            Log.d("Generate Date", ""+ datePlace);
+            values.put(SleepTable.COL_DATE, datePlace);
+            values.put(SleepTable.COL_TOTALSLEEP, 0);
+            long success = db.insert(SleepTable.TABLE, null, values);
+            if(success != -1){
+                Log.d("Generate MoodTable", "Sucess");
+            }else{
+                Log.d("Generate MoodTable", "Fail");
+            }
+        }
+
+        for(int i = 1; i<MaxMonth; i++){
+            ContentValues values = new ContentValues();
+            String datePlace = dateTop;
+            if(i < 10){
+                datePlace += "-0"+i;
+            }else{
+                datePlace += "-"+i;
+            }
+            Log.d("Generate Date", ""+ datePlace);
+            values.put(ExcerciseTable.COL_DATE, datePlace);
+            values.put(ExcerciseTable.COL_TOTALEXCERCISE, 0);
+            long success = db.insert(ExcerciseTable.TABLE, null, values);
+            if(success != -1){
+                Log.d("Generate MoodTable", "Sucess");
+            }else{
+                Log.d("Generate MoodTable", "Fail");
+            }
+        }
+
+
+        for(int i = 1; i<MaxMonth; i++){
+            ContentValues values = new ContentValues();
+            String datePlace = dateTop;
+            if(i < 10){
+                datePlace += "-0"+i;
+            }else{
+                datePlace += "-"+i;
+            }
+            Log.d("Generate Date", ""+ datePlace);
+            values.put(SocialTable.COL_DATE, datePlace);
+            values.put(SocialTable.COL_TOTALSOCIAL, 0);
+            values.put(SocialTable.COL_UNIQUENUM, 0);
+            long success = db.insert(SocialTable.TABLE, null, values);
+            if(success != -1){
+                Log.d("Generate MoodTable", "Sucess");
+            }else{
+                Log.d("Generate MoodTable", "Fail");
+            }
+        }
+        for(int i = 1; i<MaxMonth; i++){
+            ContentValues values = new ContentValues();
+            String datePlace = dateTop;
+            if(i < 10){
+                datePlace += "-0"+i;
+            }else{
+                datePlace += "-"+i;
+            }
+            Log.d("Generate Date", ""+ datePlace);
+            values.put(FinanceTable.COL_DATE, datePlace);
+            values.put(FinanceTable.COL_MONEY, 0);
+            long success = db.insert(FinanceTable.TABLE, null, values);
+            if(success != -1){
+                Log.d("Generate MoodTable", "Sucess");
+            }else{
+                Log.d("Generate MoodTable", "Fail");
+            }
+        }
+        for(int i = 1; i<MaxMonth; i++){
+            ContentValues values = new ContentValues();
+            String datePlace = dateTop;
+            if(i < 10){
+                datePlace += "-0"+i;
+            }else{
+                datePlace += "-"+i;
+            }
+            Log.d("Generate Date", ""+ datePlace);
+            values.put(MoodTable.COL_DATE, datePlace);
+            values.put(MoodTable.COL_MOOD, 0);
+            long success = db.insert(MoodTable.TABLE, null, values);
+            if(success != -1){
+                Log.d("Generate MoodTable", "Sucess");
+            }else{
+                Log.d("Generate MoodTable", "Fail");
+            }
+        }
+
     }
 
 
@@ -212,12 +331,8 @@ public class Database extends SQLiteOpenHelper {
             Log.d("Generate Calorie", ""+ randomcalorie);
             values.put(EatTable.COL_DATE, datePlace);
             values.put(EatTable.COL_CALORIES, randomcalorie);
-            long sucess = db.insert(EatTable.TABLE, null, values);
-            if(sucess != -1){
-                Log.d("Generate Eat", "Sucess");
-            }else{
-                Log.d("Generate Eat", "Fail");
-            }
+            db.update(EatTable.TABLE,values, EatTable.COL_DATE + " = ?", new String[]{datePlace});
+
         }
 
     }
@@ -324,12 +439,7 @@ public class Database extends SQLiteOpenHelper {
             Log.d("Generate Sleep", ""+ randomsleep);
             values.put(SleepTable.COL_DATE, datePlace);
             values.put(SleepTable.COL_TOTALSLEEP, randomsleep);
-            long success = db.insert(SleepTable.TABLE, null, values);
-            if(success != -1){
-                Log.d("Generate Sleep", "Sucess");
-            }else{
-                Log.d("Generate Sleep", "Fail");
-            }
+            db.update(SleepTable.TABLE,values, SleepTable.COL_DATE + " = ?", new String[]{datePlace});
         }
     }
 
@@ -432,12 +542,7 @@ public class Database extends SQLiteOpenHelper {
             Log.d("Generate randomexcercise", ""+ randomexcercise);
             values.put(ExcerciseTable.COL_DATE, datePlace);
             values.put(ExcerciseTable.COL_TOTALEXCERCISE, randomexcercise);
-            long success = db.insert(ExcerciseTable.TABLE, null, values);
-            if(success != -1){
-                Log.d("Generate ExcerciseTable", "Sucess");
-            }else{
-                Log.d("Generate ExcerciseTable", "Fail");
-            }
+            db.update(ExcerciseTable.TABLE,values, ExcerciseTable.COL_DATE + " = ?", new String[]{datePlace});
         }
 
     }
@@ -543,12 +648,7 @@ public class Database extends SQLiteOpenHelper {
             values.put(SocialTable.COL_DATE, datePlace);
             values.put(SocialTable.COL_TOTALSOCIAL, randomSocial);
             values.put(SocialTable.COL_UNIQUENUM, randomUnique);
-            long success = db.insert(SocialTable.TABLE, null, values);
-            if(success != -1){
-                Log.d("Generate SocialTable", "Sucess");
-            }else{
-                Log.d("Generate SocialTable", "Fail");
-            }
+            db.update(SocialTable.TABLE,values, SocialTable.COL_DATE + " = ?", new String[]{datePlace});
         }
 
     }
@@ -675,12 +775,7 @@ public class Database extends SQLiteOpenHelper {
             Log.d("Generate randomFinance", ""+ randomFinance);
             values.put(FinanceTable.COL_DATE, datePlace);
             values.put(FinanceTable.COL_MONEY, randomFinance);
-            long success = db.insert(FinanceTable.TABLE, null, values);
-            if(success != -1){
-                Log.d("Generate FinanceTable", "Sucess");
-            }else{
-                Log.d("Generate FinanceTable", "Fail");
-            }
+            db.update(FinanceTable.TABLE,values, FinanceTable.COL_DATE + " = ?", new String[]{datePlace});
         }
 
     }
@@ -815,12 +910,7 @@ public class Database extends SQLiteOpenHelper {
             Log.d("Generate randomMood", ""+ randomMood);
             values.put(MoodTable.COL_DATE, datePlace);
             values.put(MoodTable.COL_MOOD, randomMood);
-            long success = db.insert(MoodTable.TABLE, null, values);
-            if(success != -1){
-                Log.d("Generate MoodTable", "Sucess");
-            }else{
-                Log.d("Generate MoodTable", "Fail");
-            }
+            db.update(MoodTable.TABLE,values, MoodTable.COL_DATE + " = ?", new String[]{datePlace});
         }
 
     }

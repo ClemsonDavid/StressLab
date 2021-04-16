@@ -1,8 +1,10 @@
 package com.example.stressapp;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -61,6 +63,13 @@ public class DeveloperArea extends AppCompatActivity {
         db.BuildFinanceData();
         db.BuildSocialData();
         db.BuildMoodData();
+
+        Context context = getApplicationContext();
+        CharSequence text = "Database Generated!";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
 
     }
 
