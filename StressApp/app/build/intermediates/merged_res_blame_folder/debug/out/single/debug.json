@@ -8,6 +8,10 @@
         "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_settings.xml"
     },
     {
+        "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\raw_hawaii_waves.wav.flat",
+        "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\raw\\hawaii_waves.wav"
+    },
+    {
         "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
@@ -36,12 +40,16 @@
         "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\drawable-v24\\baseline_perm_identity_white_48.png"
     },
     {
+        "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
         "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_inputdatatitle.xml.flat",
         "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_inputdatatitle.xml"
     },
     {
-        "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+        "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_exercise.xml.flat",
+        "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_exercise.xml"
     },
     {
         "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_sleepinginput.xml.flat",
@@ -56,16 +64,20 @@
         "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_ambient.xml.flat",
+        "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_ambient.xml"
+    },
+    {
         "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_paperwhite.png.flat",
-        "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\paperwhite.png"
-    },
-    {
         "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_paperwhite.png.flat",
+        "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\paperwhite.png"
     },
     {
         "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_pngwing_com.png.flat",
@@ -84,16 +96,20 @@
         "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\menu\\appbar_menu.xml"
     },
     {
-        "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_graphdatagraphmood.xml.flat",
-        "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_graphdatagraphmood.xml"
-    },
-    {
         "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_settingsred.png.flat",
         "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\settingsred.png"
     },
     {
+        "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_graphdatagraphmood.xml.flat",
+        "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_graphdatagraphmood.xml"
+    },
+    {
         "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_math.xml.flat",
+        "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_math.xml"
     },
     {
         "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_graphdatatitle.xml.flat",
@@ -144,12 +160,20 @@
         "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\drawable\\sad.png"
     },
     {
+        "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_encourage.xml.flat",
+        "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_encourage.xml"
+    },
+    {
         "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_main.xml.flat",
         "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\fragment_main.xml"
     },
     {
         "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\raw_small_fireplace_crackles.wav.flat",
+        "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\raw\\small_fireplace_crackles.wav"
     },
     {
         "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
@@ -210,5 +234,9 @@
     {
         "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_profiletitle.xml.flat",
         "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\layout\\activity_profiletitle.xml"
+    },
+    {
+        "merged": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\build\\intermediates\\res\\merged\\debug\\raw_beautiful_bells.mp3.flat",
+        "source": "C:\\Users\\julia\\GitHub\\FreshPull\\StressLab\\StressApp\\app\\src\\main\\res\\raw\\beautiful_bells.mp3"
     }
 ]

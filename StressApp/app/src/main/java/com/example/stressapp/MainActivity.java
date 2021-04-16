@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void OnStartClick(View view){
-        Intent intent = new Intent(this, Settings.class);
+        Intent intent = new Intent(this, DistractionTitle.class);
         startActivity(intent);
     }
 }
