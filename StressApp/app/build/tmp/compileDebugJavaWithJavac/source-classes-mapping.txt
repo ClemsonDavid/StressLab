@@ -14,6 +14,8 @@ com/example/stressapp/BuildConfig.java
  com.example.stressapp.BuildConfig
 com/example/stressapp/DeveloperArea.java
  com.example.stressapp.DeveloperArea
+com/example/stressapp/ProfileTitle.java
+ com.example.stressapp.ProfileTitle
 com/example/stressapp/Settings.java
  com.example.stressapp.Settings
  com.example.stressapp.Settings$1

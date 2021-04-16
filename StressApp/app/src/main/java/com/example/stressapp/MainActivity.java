@@ -10,13 +10,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+
+import android.content.ClipData;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
     private static final String PREFS = "prefs";
     private static final double MaxBright = 255.0;
+    StringBuilder s = new StringBuilder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,13 +72,33 @@ public class MainActivity extends AppCompatActivity {
         ImageView TitleImage = findViewById(R.id.TitleImage);
         TitleImage.setImageResource(ImageSrc);
 
+        SharedPreferences user = getSharedPreferences("user", MODE_PRIVATE);
+        Boolean saved = user.getBoolean("saved", false);
+        if (saved == true) {
+            s.append(getResources().getString(R.string.greeting));
+            s.append(" ");
+            s.append(user.getString("name", ""));
+            s.append(getResources().getString(R.string.excite));
+            TextView greeting = findViewById(R.id.HelloText);
+            greeting.setText(s);
+            s.setLength(0);
+            greeting.setVisibility(View.VISIBLE);
 
+            String uriString = user.getString("uri", "");
+            if (uriString != "") {
 
+                Uri uri = Uri.parse(uriString);
+                Bitmap bitmap = null;
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                    Bitmap rotatedBitmap = ProfileTitle.rotateImage(bitmap, 90);
+                    TitleImage.setImageBitmap(rotatedBitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-
-
-
-
+            }
+        }
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);

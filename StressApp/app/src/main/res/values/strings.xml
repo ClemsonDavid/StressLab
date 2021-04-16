@@ -127,6 +127,96 @@
 
     <string name="distractiontitletitle">Which Distraction Do You Need?</string>
     <string name="bubbles">Bubble Pop</string>
+    <string name="ambient">Ambient Sounds</string>
+    <string name="math_button">Simple Math</string>
+
+    <!-- Ambient Music -->
+    <string name="ambient_title">What Type of Sounds Would You Like To Listen To?</string>
+    <string name="waves">Ocean Waves</string>
+    <string name="chimes">Wind Chimes</string>
+    <string name="fire">Fireplace</string>
+
+    <!-- Math -->
+    <string name="math_title">Math Problem</string>
+    <string name="math_heading">Here Are Some Simple Math Problems</string>
+    <string name="math_hint">Put Your Answer Here</string>
+    <string name="answer_button">Check Answer</string>
+    <array name="math_symbols">
+        <item>+</item>
+        <item>-</item>
+        <item>*</item>
+    </array>
+    <string name="correct">Congrats! You Got It Right!</string>
+    <string name="wrong">Sorry, You Got It Wrong. The Answer Was: </string>
+
+    <!-- Exercise -->
+    <string name="exercise_button">Exercise</string>
+    <string name="exercise_title">Choose One Of The Exercises/Healthy Activities Below!</string>
+    <string name="exercise1">Exercise 1</string>
+    <string name="exercise2">Exercise 2</string>
+    <string name="exercise3">Exercise 3</string>
+    <array name="exercise_types">
+        <item>Pushups</item>
+        <item>Situps</item>
+        <item>Crunches</item>
+        <item>Burpies</item>
+        <item>Seconds Doing Your Favorite Yoga Pose</item>
+        <item>Laps Around The Room</item>
+        <item>Seconds Stretching</item>
+        <item>Minutes Spent Outside</item>
+        <item>Sips Of Water</item>
+        <item>Things You Like About Yourself</item>
+        <item>Things That Make You Happy</item>
+        <item>Things That Make You Laugh</item>
+    </array>
+    <string name="exercise_cheer">Way to Go!</string>
+
+    <!-- Compliments -->
+    <string name="encouragements_button">Encouragement</string>
+    <string name="encourage_text">Encourage Text</string>
+    <array name="encouragements">
+        <item>You are loved.</item>
+        <item>You are enough.</item>
+        <item>You still have time.</item>
+        <item>We believe in you.</item>
+        <item>You are important.</item>
+        <item>You are strong.</item>
+        <item>You matter.</item>
+        <item>“It takes a great deal of courage to stand up to your enemies, but even more to stand up to your friends.” — J.K. Rowling</item>
+        <item>“Nobody cares if you can’t dance well. Just get up and dance. Great dancers are not great because of their technique, they are great because of their passion.” — Martha Graham</item>
+        <item>“The most beautiful thing you can wear is confidence.” — Blake Lively</item>
+        <item>“No one can make you feel inferior without your consent.” — Eleanor Roosevelt</item>
+        <item>“Always be a first-rate version of yourself, instead of a second-rate version of somebody else.” — Judy Garland</item>
+        <item>“The most effective way to do it, is to do it.” — Amelia Earhart</item>
+        <item>“If you don’t have any shadows you’re not in the light.” — Lady Gaga</item>
+        <item>“A man may fail many times but he isn’t a failure until he begins to blame somebody else.” – John Burroughs</item>
+        <item>“Anyone can hide. Facing up to things, working through them, that’s what makes you strong.” – Sarah Dessen</item>
+        <item>“If one dream should fall and break into a thousand pieces, never be afraid to pick one of those pieces up and begin again.” – Flavia Weedn</item>
+        <item>“When one door of happiness closes, another opens, but often we look so long at the closed door that we do not see the one that has been opened for us.” – Helen Keller</item>
+        <item>“I’ve missed more than 9000 shots in my career. I’ve lost almost 300 games. 26 times, I’ve been trusted to take the game winning shot and missed. I’ve failed over and over and over again in my life. And that is why I succeed.” – Michael Jordan</item>
+        <item>“Success is not final, failure is not fatal: it is the courage to continue that counts.” – Winston Churchill</item>
+        <item>“Remember that failure is an event, not a person.” – Zig Ziglar</item>
+        <item>“Courage doesn’t always roar. Sometimes courage is the quiet voice at the end of the day saying, “I will try again tomorrow.” – Mary Anne Radmacher</item>
+        <item>“In a moment of decision, the best thing you can do is the right thing to do, the next best thing is the wrong thing, and the worst thing you can do is nothing.” – Theodore Roosevelt</item>
+        <item>“Success does not consist in never making mistakes but in never making the same one a second time.” – George Bernard Shaw</item>
+        <item>“Try not to become a person of success, but rather try to become a person of value.” – Albert Einstein</item>
+        <item>“Take time to deliberate; but when the time for action arrives, stop thinking and go in.” – Napoleon Bonaparte</item>
+        <item>“Don’t wait. The time will never be just right.” – Napoleon Hill</item>
+        <item>“You can make more friends in two months by becoming interested in other people than you can in two years by trying to get other people interested in you.” – Dale Carnegie</item>
+        <item>“Love is not only something you feel, it is something you do.” – David Wilkerson</item>
+        <item>“Just because it didn’t last forever, doesn’t mean it wasn’t worth your while.” – Unknown</item>
+    </array>
+
+    <!-- Profile -->
+    <string name="profile_title">Profile</string>
+    <string name="profile_hint">Insert Name Here</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="greeting">Welcome back</string>
+    <string name="excite">!</string>
+    <string name="success">Successfully stored your profile!</string>
+    <string name="path">/Android/data/com.example.stressapp/</string>
+    <string name="find_fail">Failed to find image file to display</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
