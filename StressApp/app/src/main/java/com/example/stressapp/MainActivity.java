@@ -5,24 +5,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
-import android.content.ClipData;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.IOException;
+/*
+Team DJ
+This is the main controller page for the app, where the user will decide where to go
+It hosts a appbar menu that directs to settings, graphs, and input
+The main button takes the user to the distractions page
+ */
+
+
 
 public class MainActivity extends AppCompatActivity {
+    //PRES and Maxbright used to correctly build the theme on screen brightness or theme pref
     private static final String PREFS = "prefs";
     private static final double MaxBright = 255.0;
     StringBuilder s = new StringBuilder();
@@ -36,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences(PREFS, MODE_PRIVATE);
         String Theme = preferences.getString("Theme", "defaultreturn");
 
-
+        //Grab the titleimage for setting
         int ImageSrc = R.drawable.titleimagee91e63_com;
 
         //Switch case for theme switching
@@ -65,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
+        //Set the contentview
         setContentView(R.layout.activity_main);
 
 
@@ -100,19 +104,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);
 
-        if (fragment == null) {
-            fragment = new MainFragment();
-            fragmentManager.beginTransaction()
-                    .add(R.id.fragment_container, fragment)
-                    .commit();
-        }
     }
 
 
     //Create menu taken from zybooks
+    //pre: The content view is set
+    //post: inflates the menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.appbar_menu, menu);
@@ -121,7 +119,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+    //pre: A menu item is selected
+    //post: Starts new activity based on selection
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -158,9 +157,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
-
+    //pre: Main button selected
+    //post: Starts Distraction Title Activity
     public void OnStartClick(View view){
         Intent intent = new Intent(this, DistractionTitle.class);
         startActivity(intent);

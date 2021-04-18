@@ -9,27 +9,24 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.text.SimpleDateFormat;
-import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
-import java.util.Set;
-import java.util.Vector;
+
 
 import static android.content.ContentValues.TAG;
 
 /*
+Team DJ
 Database Structure heavily inspired by Zybooks
+Handles creation, build, update and generation
  */
 
 
 public class Database extends SQLiteOpenHelper {
 
+    //Variables
     private static final String DATABASE_NAME = "stressinfo.db";
     private static final int VERSION = 1;
     private static final int MaxMonth = 32;
@@ -48,7 +45,6 @@ public class Database extends SQLiteOpenHelper {
     }
 
     //Database class for sleeping
-    //0 AM for am, 1 AM for pm
     private static final class SleepTable{
         private static final String TABLE = "sleep";
         private static final String COL_ID = "_id";
@@ -91,7 +87,8 @@ public class Database extends SQLiteOpenHelper {
 
 
 
-
+    //Pre:
+    //Post: Creates all database tables and filles them with 0s
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Create EatTable
@@ -139,15 +136,10 @@ public class Database extends SQLiteOpenHelper {
             }else{
                 datePlace += "-"+i;
             }
-            Log.d("Generate Date", ""+ datePlace);
             values.put(EatTable.COL_DATE, datePlace);
             values.put(EatTable.COL_CALORIES, 0);
             long success = db.insert(EatTable.TABLE, null, values);
-            if(success != -1){
-                Log.d("Generate MoodTable", "Sucess");
-            }else{
-                Log.d("Generate MoodTable", "Fail");
-            }
+
         }
 
         for(int i = 1; i<MaxMonth; i++){
@@ -158,15 +150,9 @@ public class Database extends SQLiteOpenHelper {
             }else{
                 datePlace += "-"+i;
             }
-            Log.d("Generate Date", ""+ datePlace);
             values.put(SleepTable.COL_DATE, datePlace);
             values.put(SleepTable.COL_TOTALSLEEP, 0);
             long success = db.insert(SleepTable.TABLE, null, values);
-            if(success != -1){
-                Log.d("Generate MoodTable", "Sucess");
-            }else{
-                Log.d("Generate MoodTable", "Fail");
-            }
         }
 
         for(int i = 1; i<MaxMonth; i++){
@@ -177,15 +163,9 @@ public class Database extends SQLiteOpenHelper {
             }else{
                 datePlace += "-"+i;
             }
-            Log.d("Generate Date", ""+ datePlace);
             values.put(ExcerciseTable.COL_DATE, datePlace);
             values.put(ExcerciseTable.COL_TOTALEXCERCISE, 0);
             long success = db.insert(ExcerciseTable.TABLE, null, values);
-            if(success != -1){
-                Log.d("Generate MoodTable", "Sucess");
-            }else{
-                Log.d("Generate MoodTable", "Fail");
-            }
         }
 
 
@@ -197,16 +177,11 @@ public class Database extends SQLiteOpenHelper {
             }else{
                 datePlace += "-"+i;
             }
-            Log.d("Generate Date", ""+ datePlace);
             values.put(SocialTable.COL_DATE, datePlace);
             values.put(SocialTable.COL_TOTALSOCIAL, 0);
             values.put(SocialTable.COL_UNIQUENUM, 0);
             long success = db.insert(SocialTable.TABLE, null, values);
-            if(success != -1){
-                Log.d("Generate MoodTable", "Sucess");
-            }else{
-                Log.d("Generate MoodTable", "Fail");
-            }
+
         }
         for(int i = 1; i<MaxMonth; i++){
             ContentValues values = new ContentValues();
@@ -216,15 +191,9 @@ public class Database extends SQLiteOpenHelper {
             }else{
                 datePlace += "-"+i;
             }
-            Log.d("Generate Date", ""+ datePlace);
             values.put(FinanceTable.COL_DATE, datePlace);
             values.put(FinanceTable.COL_MONEY, 0);
             long success = db.insert(FinanceTable.TABLE, null, values);
-            if(success != -1){
-                Log.d("Generate MoodTable", "Sucess");
-            }else{
-                Log.d("Generate MoodTable", "Fail");
-            }
         }
         for(int i = 1; i<MaxMonth; i++){
             ContentValues values = new ContentValues();
@@ -234,15 +203,9 @@ public class Database extends SQLiteOpenHelper {
             }else{
                 datePlace += "-"+i;
             }
-            Log.d("Generate Date", ""+ datePlace);
             values.put(MoodTable.COL_DATE, datePlace);
             values.put(MoodTable.COL_MOOD, 0);
             long success = db.insert(MoodTable.TABLE, null, values);
-            if(success != -1){
-                Log.d("Generate MoodTable", "Sucess");
-            }else{
-                Log.d("Generate MoodTable", "Fail");
-            }
         }
 
     }
@@ -262,33 +225,36 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    /*
+    Before you go further, know that all addX, BuildXData, and returnX all follow the same order
+     */
 
 
-    //All Eat functions
+
+    //pre: int passed in
+    //post: writes passed in data to db, add new entry or updates an existing one if need be
     public long addEat(int calories){
 
         //Check for repeats and delete so only one record per day
         SQLiteDatabase db = getReadableDatabase();
 
+        //Get date for input
         SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
 
-
+        //See if there is an input alreay
         String sqlCheck = "select * from " + EatTable.TABLE + " where date = ? ";
         Cursor cursorCheck = db.rawQuery(sqlCheck, new String[]{ formatDate.format(date) });
         long removeid = -1;
 
         if (cursorCheck.moveToFirst()){
-            Log.d("Repeat", "Found");
             removeid = cursorCheck.getLong(0);
-        }else{
-            Log.d("Repeat", "Not Found");
         }
         cursorCheck.close();
 
         db = getWritableDatabase();
 
-        //Delete Repeat if needed
+        //Overwrite Repeat if needed, else place new entry into db
         if(removeid != -1){
             ContentValues replace = new ContentValues();
             replace.put(EatTable.COL_CALORIES, calories);
@@ -302,18 +268,19 @@ public class Database extends SQLiteOpenHelper {
 
 
             long Id = db.insert(EatTable.TABLE, null, values);
-            Log.d("Database Insert Eat", "Returned a : " + Id);
 
 
             return Id;
         }
     }
 
+    //pre:
+    //post: builds random data into db
     public void BuildEatData(){
 
         SQLiteDatabase db = getReadableDatabase();
 
-
+        //Makes month string, and makes random data based on a low of 100 and a high of 20000 calories
         String dateTop = "2021-04";
         Random r = new Random();
         int low = 100;
@@ -327,8 +294,6 @@ public class Database extends SQLiteOpenHelper {
             }else{
                 datePlace += "-"+i;
             }
-            Log.d("Generate Date", ""+ datePlace);
-            Log.d("Generate Calorie", ""+ randomcalorie);
             values.put(EatTable.COL_DATE, datePlace);
             values.put(EatTable.COL_CALORIES, randomcalorie);
             db.update(EatTable.TABLE,values, EatTable.COL_DATE + " = ?", new String[]{datePlace});
@@ -337,6 +302,8 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
+    //Pre:
+    //post: Returns all data in a month from database in a 2d array
     public String[][] returnEat(){
         SQLiteDatabase db = getReadableDatabase();
 
@@ -372,6 +339,8 @@ public class Database extends SQLiteOpenHelper {
 
 
     //All Sleep Functions
+    //pre: double passed in
+    //post: writes passed in data to db, add new entry or updates an existing one if need be
     public long addSleep(double TotalSleep){
         //Check for repeats and delete so only one record per day
         SQLiteDatabase db = getReadableDatabase();
@@ -384,10 +353,7 @@ public class Database extends SQLiteOpenHelper {
         Cursor cursorCheck = db.rawQuery(sqlCheck, new String[]{ formatDate.format(date) });
         long removeid = -1;
         if (cursorCheck.moveToFirst()){
-            Log.d("Repeat", "Found");
             removeid = cursorCheck.getLong(0);
-        }else{
-            Log.d("Repeat", "Not Found");
         }
         cursorCheck.close();
 
@@ -407,7 +373,6 @@ public class Database extends SQLiteOpenHelper {
         }else {
 
             long Id = db.insert(SleepTable.TABLE, null, values);
-            Log.d("Database Insert Eat","Returned a : "+Id);
 
 
             return Id;
@@ -417,6 +382,8 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
+    //pre:
+    //post: builds random data into db
     public void BuildSleepData(){
 
         SQLiteDatabase db = getReadableDatabase();
@@ -435,14 +402,14 @@ public class Database extends SQLiteOpenHelper {
             }else{
                 datePlace += "-"+i;
             }
-            Log.d("Generate Date", ""+ datePlace);
-            Log.d("Generate Sleep", ""+ randomsleep);
             values.put(SleepTable.COL_DATE, datePlace);
             values.put(SleepTable.COL_TOTALSLEEP, randomsleep);
             db.update(SleepTable.TABLE,values, SleepTable.COL_DATE + " = ?", new String[]{datePlace});
         }
     }
 
+    //Pre:
+    //post: Returns all data in a month from database in a 2d array
     public String[][] returnSleep(){
         SQLiteDatabase db = getReadableDatabase();
 
@@ -476,7 +443,8 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
-
+    //pre: double passed in
+    //post: writes passed in data to db, add new entry or updates an existing one if need be
     public long addExcercise(double adjustedExcercise){
         //Check for repeats and delete so only one record per day
         SQLiteDatabase db = getReadableDatabase();
@@ -489,10 +457,8 @@ public class Database extends SQLiteOpenHelper {
         Cursor cursorCheck = db.rawQuery(sqlCheck, new String[]{ formatDate.format(date) });
         long removeid = -1;
         if (cursorCheck.moveToFirst()){
-            Log.d("Repeat", "Found");
+
             removeid = cursorCheck.getLong(0);
-        }else{
-            Log.d("Repeat", "Not Found");
         }
 
 
@@ -508,7 +474,6 @@ public class Database extends SQLiteOpenHelper {
             return 1;
         }else{
             long Id = db.insert(ExcerciseTable.TABLE, null, values);
-            Log.d("Database Insert Eat","Returned a : "+Id);
 
             return Id;
         }
@@ -520,6 +485,8 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
+    //pre:
+    //post: builds random data into db
     public void BuildExcerciseData(){
 
         SQLiteDatabase db = getReadableDatabase();
@@ -538,8 +505,6 @@ public class Database extends SQLiteOpenHelper {
             }else{
                 datePlace += "-"+i;
             }
-            Log.d("Generate Date", ""+ datePlace);
-            Log.d("Generate randomexcercise", ""+ randomexcercise);
             values.put(ExcerciseTable.COL_DATE, datePlace);
             values.put(ExcerciseTable.COL_TOTALEXCERCISE, randomexcercise);
             db.update(ExcerciseTable.TABLE,values, ExcerciseTable.COL_DATE + " = ?", new String[]{datePlace});
@@ -547,6 +512,8 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
+    //Pre:
+    //post: Returns all data in a month from database in a 2d array
     public String[][] returnExcercise(){
         SQLiteDatabase db = getReadableDatabase();
 
@@ -580,7 +547,8 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
-
+    //pre: double and an int passed in
+    //post: writes passed in data to db, add new entry or updates an existing one if need be
     public long addSocial(double adjustedSocial, int numppl){
         //Check for repeats and delete so only one record per day
         SQLiteDatabase db = getReadableDatabase();
@@ -593,10 +561,7 @@ public class Database extends SQLiteOpenHelper {
         Cursor cursorCheck = db.rawQuery(sqlCheck, new String[]{ formatDate.format(date) });
         long removeid = -1;
         if (cursorCheck.moveToFirst()){
-            Log.d("Repeat", "Found");
             removeid = cursorCheck.getLong(0);
-        }else{
-            Log.d("Repeat", "Not Found");
         }
 
 
@@ -615,7 +580,6 @@ public class Database extends SQLiteOpenHelper {
             return 1;
         }else{
             long Id = db.insert(SocialTable.TABLE, null, values);
-            Log.d("Database Insert Eat","Returned a : "+Id);
 
             return Id;
         }
@@ -624,6 +588,8 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
+    //pre:
+    //post: builds random data into db
     public void BuildSocialData(){
 
         SQLiteDatabase db = getReadableDatabase();
@@ -643,8 +609,6 @@ public class Database extends SQLiteOpenHelper {
             }else{
                 datePlace += "-"+i;
             }
-            Log.d("Generate Date", ""+ datePlace);
-            Log.d("Generate randomSocial", ""+ randomSocial);
             values.put(SocialTable.COL_DATE, datePlace);
             values.put(SocialTable.COL_TOTALSOCIAL, randomSocial);
             values.put(SocialTable.COL_UNIQUENUM, randomUnique);
@@ -653,6 +617,8 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
+    //Pre:
+    //post: Returns all data in a month from database in a 2d array
     public String[][] returnSocial(){
         SQLiteDatabase db = getReadableDatabase();
 
@@ -688,6 +654,8 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
+    //pre: double passed in
+    //post: writes passed in data to db, add new entry or updates an existing one if need be
     public long addFinance(double money){
         //Check for repeats and delete so only one record per day
         SQLiteDatabase db = getReadableDatabase();
@@ -700,10 +668,8 @@ public class Database extends SQLiteOpenHelper {
         Cursor cursorCheck = db.rawQuery(sqlCheck, new String[]{ formatDate.format(date) });
         long removeid = -1;
         if (cursorCheck.moveToFirst()){
-            Log.d("Repeat", "Found");
+
             removeid = cursorCheck.getLong(0);
-        }else{
-            Log.d("Repeat", "Not Found");
         }
 
 
@@ -720,7 +686,6 @@ public class Database extends SQLiteOpenHelper {
             return 1;
         }else{
             long Id = db.insert(FinanceTable.TABLE, null, values);
-            Log.d("Database Insert Eat","Returned a : "+Id);
             return Id;
         }
 
@@ -728,31 +693,11 @@ public class Database extends SQLiteOpenHelper {
 
 
 
-        /*TODO remove below
-
-        db = getReadableDatabase();
-
-        String sql = "select * from " + FinanceTable.TABLE + " ";
-        Cursor cursor = db.rawQuery(sql, new String[]{});
-        if (cursor.moveToFirst()) {
-            do {
-                long id = cursor.getLong(0);
-                String time = cursor.getString(1);
-                String Money = cursor.getString(2);
-                Log.d(TAG, "Returned = " + id + ", " + time + ",COL_MONEY " + Money );
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-
-
-
-         */
-
-
-
 
     }
 
+    //pre:
+    //post: builds random data into db
     public void BuildFinanceData(){
 
         SQLiteDatabase db = getReadableDatabase();
@@ -771,8 +716,6 @@ public class Database extends SQLiteOpenHelper {
             }else{
                 datePlace += "-"+i;
             }
-            Log.d("Generate Date", ""+ datePlace);
-            Log.d("Generate randomFinance", ""+ randomFinance);
             values.put(FinanceTable.COL_DATE, datePlace);
             values.put(FinanceTable.COL_MONEY, randomFinance);
             db.update(FinanceTable.TABLE,values, FinanceTable.COL_DATE + " = ?", new String[]{datePlace});
@@ -780,6 +723,8 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
+    //Pre:
+    //post: Returns all data in a month from database in a 2d array
     public String[][] returnFinance(){
         SQLiteDatabase db = getReadableDatabase();
 
@@ -813,7 +758,8 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
-
+    //pre: int passed in
+    //post: writes passed in data to db, add new entry or updates an existing one if need be
     public long addMood(int mood){
         //Check for repeats and delete so only one record per day
         SQLiteDatabase db = getReadableDatabase();
@@ -826,10 +772,8 @@ public class Database extends SQLiteOpenHelper {
         Cursor cursorCheck = db.rawQuery(sqlCheck, new String[]{ formatDate.format(date) });
         long removeid = -1;
         if (cursorCheck.moveToFirst()){
-            Log.d("Repeat", "Found");
+
             removeid = cursorCheck.getLong(0);
-        }else{
-            Log.d("Repeat", "Not Found");
         }
 
 
@@ -845,42 +789,10 @@ public class Database extends SQLiteOpenHelper {
             return 1;
         }else{
             long Id = db.insert(MoodTable.TABLE, null, values);
-            Log.d("Database Insert Eat","Returned a : "+Id);
+
             return Id;
         }
 
-        /*
-                if(removeid != -1){
-            db.update(FinanceTable.TABLE,values, FinanceTable.COL_ID + " = ?", new String[]{Long.toString(removeid)});
-            return 1;
-        }else{
-            long Id = db.insert(FinanceTable.TABLE, null, values);
-            Log.d("Database Insert Eat","Returned a : "+Id);
-            return Id;
-        }
-         */
-
-
-
-
-        /*TODO remove below
-
-        db = getReadableDatabase();
-
-        String sql = "select * from " + MoodTable.TABLE + " ";
-        Cursor cursor = db.rawQuery(sql, new String[]{});
-        if (cursor.moveToFirst()) {
-            do {
-                long id = cursor.getLong(0);
-                String time = cursor.getString(1);
-                String Mood = cursor.getString(2);
-                Log.d(TAG, "Returned = " + id + ", " + time + ",Mood " + Mood );
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-
-
-         */
 
 
 
@@ -888,6 +800,8 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
+    //pre:
+    //post: builds random data into db
     public void BuildMoodData(){
 
         SQLiteDatabase db = getReadableDatabase();
@@ -906,8 +820,6 @@ public class Database extends SQLiteOpenHelper {
             }else{
                 datePlace += "-"+i;
             }
-            Log.d("Generate Date", ""+ datePlace);
-            Log.d("Generate randomMood", ""+ randomMood);
             values.put(MoodTable.COL_DATE, datePlace);
             values.put(MoodTable.COL_MOOD, randomMood);
             db.update(MoodTable.TABLE,values, MoodTable.COL_DATE + " = ?", new String[]{datePlace});
@@ -915,6 +827,8 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
+    //Pre:
+    //post: Returns all data in a month from database in a 2d array
     public String[][] returnMood(){
         SQLiteDatabase db = getReadableDatabase();
 

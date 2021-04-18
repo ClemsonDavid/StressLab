@@ -7,8 +7,14 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+/*
+Team DJ
+This is a special activity that activates the db.BuildXData functions for the presentation
+ */
+
 
 public class DeveloperArea extends AppCompatActivity {
+
     private static final String PREFS = "prefs";
     private static final double MaxBright = 255.0;
     Database db;
@@ -56,6 +62,8 @@ public class DeveloperArea extends AppCompatActivity {
 
     }
 
+    //pre: Generate Database button is clicked
+    //post: writes all data to db and make toast when done
     public void OnGenerateClick(View v){
         db.BuildEatData();
         db.BuildSleepData();

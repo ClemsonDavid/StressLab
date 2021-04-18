@@ -6,8 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+/*
+Team DJ
+This activity takes in user selection and directs to the proper activity
+ */
 
 public class GraphDataTitle extends AppCompatActivity {
+    //PRES and Maxbright used to correctly build the theme on screen brightness or theme pref
     private static final String PREFS = "prefs";
     private static final double MaxBright = 255.0;
 
@@ -45,6 +50,8 @@ public class GraphDataTitle extends AppCompatActivity {
 
     }
 
+    //pre: option is selected
+    //post: starts activity depending on which button is selected
     public void OptionSelect(View v) {
         String TypeInput = "";
         Intent intent = new Intent(this, GraphDataGraph.class);

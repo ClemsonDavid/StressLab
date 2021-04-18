@@ -3,7 +3,6 @@ package com.example.stressapp;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,10 +10,15 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+
+/*
+Team DJ
+The activity holds the settings changes and possibly directs to Developer area
+ */
+
 
 public class Settings extends AppCompatActivity {
+    //PRES and Maxbright used to correctly build the theme on screen brightness or theme pref
     private static final String PREFS = "prefs";
     private String Theme;
     private static final double MaxBright = 255.0;
@@ -60,7 +64,7 @@ public class Settings extends AppCompatActivity {
         TitleImage.setImageResource(ImageSrc);
 
 
-
+        //Spinner Class taken from zybooks for theme selection
         Spinner spinner = findViewById(R.id.ThemeSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.Themes, android.R.layout.simple_spinner_item);
@@ -86,6 +90,9 @@ public class Settings extends AppCompatActivity {
         Theme = theme;
     }
 
+    //Set the theme for the app
+    //Pre: spinner have an item
+    //post: writes to shared prefs a new theme, restarts settings activity
     public void OnStartClick(View view){
 
         SharedPreferences.Editor editor = getSharedPreferences(PREFS, MODE_PRIVATE).edit();
@@ -98,6 +105,8 @@ public class Settings extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //pre:
+    //Post: Starts Developer Area activity
     public void OnDevClick(View v){
         Intent intent = new Intent(this, DeveloperArea.class);
         startActivity(intent);

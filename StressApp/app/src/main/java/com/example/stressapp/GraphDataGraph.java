@@ -3,7 +3,6 @@ package com.example.stressapp;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -26,11 +25,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-
+/*
+Team DJ
+This is the View object for all graphs, bask in its large switch statement and know fear
+But seriously, this activity handles all the graph setup
+The graphing code was used with Apache License 2.0 from Phil Jay
+ */
 
 public class GraphDataGraph extends AppCompatActivity {
+    //PRES and Maxbright used to correctly build the theme on screen brightness or theme pref
     private static final String PREFS = "prefs";
     private static final double MaxBright = 255.0;
+    //Database instance
     Database db;
     private static final int MaxMonth = 32;
     private String TheTheme;
@@ -71,8 +77,10 @@ public class GraphDataGraph extends AppCompatActivity {
         //Create Instance of db
         db = new Database(this);
 
+        //Set basic graph activity
         setContentView(R.layout.activity_graphdatagraph);
         Intent intent = getIntent();
+        //Get type to graph and pass to setContents function
         String Type = intent.getExtras().getString("Type");
         setContents(Type);
 
@@ -80,14 +88,15 @@ public class GraphDataGraph extends AppCompatActivity {
 
     }
 
-    /*TODO closing thoughts
-        Need to think about possibly a new layout file for certain types
-            -Social
-            -Mood
- */
 
-
+    //pre:
+    //Post: Returns a activity layout with graph data
     private void setContents(String Type){
+
+        /*
+            This is a extremely large switch statement, and a lot of the code is the same just with data types are different
+            I'll Fully comment on Eating case, the only different ones being social, and Mood, so goto those
+         */
 
         switch(Type){
             case "Eating":
@@ -100,18 +109,17 @@ public class GraphDataGraph extends AppCompatActivity {
                 MonthLineChartText.setText(R.string.EatMonth);
 
                 //Daily Set
+                    //Set daily text
                     TextView DailyText = findViewById(R.id.DailyText);
-                    Log.d("Before returnEat","Before");
+                    //Get monthlyData from db
                     String[][] monthlyData = db.returnEat();
-                    for(int i = 1; i<monthlyData.length; i++){
-                        Log.d("Date", ""+ monthlyData[i][0]);
-                        Log.d("Calorie", ""+ monthlyData[i][1]);
-                    }
+                    //Get today's date in a dd format
                     SimpleDateFormat formatDate = new SimpleDateFormat("dd");
                     Date date = new Date();
-                    Log.d("Today",""+formatDate.format(date));
+                    //Parse Today
                     int Today = Integer.parseInt(formatDate.format(date));
 
+                    //Switch on if there isn't any data, most likely will never occur on how thhe database is setup
                     if(monthlyData[1][0] == null){
                         DailyText.setText(R.string.NullEating);
                         break;
@@ -132,7 +140,6 @@ public class GraphDataGraph extends AppCompatActivity {
                     BarChart WeekChart = findViewById(R.id.WeekBarChart);
 
 
-
                     //BarChart Entries
                     ArrayList<BarEntry> values = new ArrayList<>();
                     for(int i = Today; i>1 && i >= Today-6; i--){
@@ -144,6 +151,7 @@ public class GraphDataGraph extends AppCompatActivity {
                     }
 
                     //Do Not touch this logic too much please
+                    //Set Labels for data
                     BarDataSet FirstSet = new BarDataSet(values, "Past 7 Days");
 
                     BarData data = new BarData(FirstSet);
@@ -152,6 +160,7 @@ public class GraphDataGraph extends AppCompatActivity {
 
                     FirstSet.setColor(ColorTemplate.MATERIAL_COLORS[0]);
 
+                    //Change colors of graph based on dark theme or red
                     if(TheTheme == "Dark"){
                         FirstSet.setValueTextColor(Color.WHITE);
                         WeekChart.getAxisLeft().setTextColor(Color.WHITE);
@@ -191,11 +200,13 @@ public class GraphDataGraph extends AppCompatActivity {
                     //Bug where linegraph entries need to be sorted by X entry, found it from the author fix post from 2016
                     Collections.sort(linevalues, new EntryXComparator());
 
+                    //Set data labels
                     SetforLine = new LineDataSet(linevalues, "Last 30 days");
                     DataforLine = new LineData(SetforLine);
 
                     MonthChart.setData(DataforLine);
                     SetforLine.setColor(ColorTemplate.MATERIAL_COLORS[0]);
+                    //Switch colors of graph based on theme
                     if(TheTheme == "Dark"){
                         SetforLine.setValueTextColor(Color.WHITE);
                         MonthChart.getAxisLeft().setTextColor(Color.WHITE);
@@ -213,11 +224,6 @@ public class GraphDataGraph extends AppCompatActivity {
 
                 break;
             case "Sleeping":
-
-
-                /*
-                    TODO sleep Round minutes up to hours for simplicity, and add an area to explain
-                 */
                 //Set Titles
                 TextView SleepTitleText = findViewById(R.id.GraphTitleText);
                 SleepTitleText.setText(R.string.SleepGraphTitle);
@@ -228,15 +234,9 @@ public class GraphDataGraph extends AppCompatActivity {
 
                 //Daily Set
                 TextView SleepDailyText = findViewById(R.id.DailyText);
-                Log.d("Before returnSleep","Before");
                 String[][] SleepmonthlyData = db.returnSleep();
-                for(int i = 1; i<SleepmonthlyData.length; i++){
-                    Log.d("Date", ""+ SleepmonthlyData[i][0]);
-                    Log.d("Calorie", ""+ SleepmonthlyData[i][1]);
-                }
                 SimpleDateFormat SleepformatDate = new SimpleDateFormat("dd");
                 Date Sleepdate = new Date();
-                Log.d("Today",""+SleepformatDate.format(Sleepdate));
                 int SleepToday = Integer.parseInt(SleepformatDate.format(Sleepdate));
 
 
@@ -344,15 +344,9 @@ public class GraphDataGraph extends AppCompatActivity {
 
                 //Daily Set
                 TextView ExcerciseDailyText = findViewById(R.id.DailyText);
-                Log.d("Before returnExcercise","Before");
                 String[][] ExcercisemonthlyData = db.returnExcercise();
-                for(int i = 1; i<ExcercisemonthlyData.length; i++){
-                    Log.d("Date", ""+ ExcercisemonthlyData[i][0]);
-                    Log.d("Calorie", ""+ ExcercisemonthlyData[i][1]);
-                }
                 SimpleDateFormat ExcerciseformatDate = new SimpleDateFormat("dd");
                 Date Excercisedate = new Date();
-                Log.d("Today",""+ExcerciseformatDate.format(Excercisedate));
                 int ExcerciseToday = Integer.parseInt(ExcerciseformatDate.format(Excercisedate));
                 if(ExcercisemonthlyData[1][0] == null){
                     ExcerciseDailyText.setText(R.string.NullExcercise);
@@ -447,6 +441,7 @@ public class GraphDataGraph extends AppCompatActivity {
                 ExcerciseSetforLine.setValueTextSize(10f);
                 break;
             case "Social":
+                //Set a special layout file for 2 barcharts and 2 line graphs
                 setContentView(R.layout.activity_graphdatagraphsocial);
                 //Set Titles
                 TextView SocialTitleText = findViewById(R.id.GraphTitleText);
@@ -462,15 +457,10 @@ public class GraphDataGraph extends AppCompatActivity {
 
                 //Daily Set
                 TextView SocialDailyText = findViewById(R.id.DailyText);
-                Log.d("Before returnSocial","Before");
                 String[][] SocialmonthlyData = db.returnSocial();
-                for(int i = 1; i<SocialmonthlyData.length; i++){
-                    Log.d("Date", ""+ SocialmonthlyData[i][0]);
-                    Log.d("Calorie", ""+ SocialmonthlyData[i][1]);
-                }
+
                 SimpleDateFormat SocialformatDate = new SimpleDateFormat("dd");
                 Date Socialdate = new Date();
-                Log.d("Today",""+SocialformatDate.format(Socialdate));
                 int SocialToday = Integer.parseInt(SocialformatDate.format(Socialdate));
                 if(SocialmonthlyData[1][0] == null){
                     SocialDailyText.setText(R.string.NullSocial);
@@ -483,7 +473,8 @@ public class GraphDataGraph extends AppCompatActivity {
                     String SocialDaily = getString(R.string.DailySocialBlurbFirst) + "" + SocialmonthlyData[SocialToday][1] + getString(R.string.DailySocialBlurbSecond) + " " + SocialmonthlyData[SocialToday][0];
                     SocialDailyText.setText(SocialDaily);
                 }
-                //Weekly Social Data BARRRRRRRRCHARRRRT
+                //Weekly Social Data BARRRRRRRRCHARRRRT 1
+                //These charts for total social hours
 
                 //BarChart for placing data
                 BarChart SocialWeekChart = findViewById(R.id.WeekBarChart);
@@ -564,7 +555,7 @@ public class GraphDataGraph extends AppCompatActivity {
                 }
                 SocialSetforLine.setValueTextSize(10f);
 
-                //TODO HEEEEERRRRREEEE
+                //CHARTS HERE ARE FOR TOTAL SOCIAL INTERACTIONS
 
                 //BarChart for placing data
                 BarChart Social2WeekChart = findViewById(R.id.WeekBarChart2);
@@ -660,15 +651,9 @@ public class GraphDataGraph extends AppCompatActivity {
 
                 //Daily Set
                 TextView FinanceDailyText = findViewById(R.id.DailyText);
-                Log.d("Before returnFinance","Before");
                 String[][] FinancemonthlyData = db.returnFinance();
-                for(int i = 1; i<FinancemonthlyData.length; i++){
-                    Log.d("Date", ""+ FinancemonthlyData[i][0]);
-                    Log.d("Calorie", ""+ FinancemonthlyData[i][1]);
-                }
                 SimpleDateFormat FinanceformatDate = new SimpleDateFormat("dd");
                 Date Financedate = new Date();
-                Log.d("Today",""+FinanceformatDate.format(Financedate));
                 int FinanceToday = Integer.parseInt(FinanceformatDate.format(Financedate));
                 if(FinancemonthlyData[1][0] == null){
                     FinanceDailyText.setText(R.string.NullFinance);
@@ -763,6 +748,7 @@ public class GraphDataGraph extends AppCompatActivity {
                 FinanceSetforLine.setValueTextSize(10f);
                 break;
             case "Mental":
+                //Set special layout file in order to have the faces show the mood
                 setContentView(R.layout.activity_graphdatagraphmood);
                 //Set Titles
                 TextView MoodTitleText = findViewById(R.id.GraphTitleText);
@@ -774,16 +760,11 @@ public class GraphDataGraph extends AppCompatActivity {
 
                 //Daily Set
                 TextView MoodDailyText = findViewById(R.id.DailyText);
-                Log.d("Before returnMood","Before");
                 String[][] MoodmonthlyData = db.returnMood();
-                for(int i = 1; i<MoodmonthlyData.length; i++){
-                    Log.d("Date", ""+ MoodmonthlyData[i][0]);
-                    Log.d("Calorie", ""+ MoodmonthlyData[i][1]);
-                }
                 SimpleDateFormat MoodformatDate = new SimpleDateFormat("dd");
                 Date Mooddate = new Date();
-                Log.d("Today",""+MoodformatDate.format(Mooddate));
                 int MoodToday = Integer.parseInt(MoodformatDate.format(Mooddate));
+                //Set the daily to happy, sad or neutral based on the data
                 String howyoufelt = "";
                 if(MoodmonthlyData[1][0] == null){
                     MoodDailyText.setText(R.string.NullMood);
@@ -795,6 +776,7 @@ public class GraphDataGraph extends AppCompatActivity {
                             break;
                         case "1":
                             howyoufelt += "neutral";
+
                             break;
                         case "2":
                             howyoufelt += "happy";
@@ -804,7 +786,7 @@ public class GraphDataGraph extends AppCompatActivity {
                     MoodDailyText.setText(MoodDaily);
                     break;
                 }else {
-                    switch (MoodmonthlyData[1][1]){
+                    switch (MoodmonthlyData[MoodToday][1]){
                         case "0":
                             howyoufelt += "sad";
                             break;

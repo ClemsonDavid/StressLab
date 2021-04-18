@@ -5,17 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+/*
+Team DJ
+This activity merely is a controller that directs the user to the selected input page
+ */
+
 
 public class InputDataTitle extends AppCompatActivity {
+    //PRES and Maxbright used to correctly build the theme on screen brightness or theme pref
     private static final String PREFS = "prefs";
     private static final double MaxBright = 255.0;
 
@@ -53,6 +52,8 @@ public class InputDataTitle extends AppCompatActivity {
 
     }
 
+    //pre: Option selected
+    //post: Starts InputDataInput Class and passes in what option was selected
     public void OptionSelect(View v){
         String TypeInput = "";
         Intent intent = new Intent(this, InputDataInput.class);

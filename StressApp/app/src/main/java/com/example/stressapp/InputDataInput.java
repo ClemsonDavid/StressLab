@@ -1,29 +1,28 @@
 
 package com.example.stressapp;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+/*
+Team DJ
+This activity handles the input from the respective layout and activate the DB functions
+ */
+
 
 public class InputDataInput extends AppCompatActivity {
+    //PRES and Maxbright used to correctly build the theme on screen brightness or theme pref
     private static final String PREFS = "prefs";
     private static final double MaxBright = 255.0;
+    //Database object
     Database db;
 
 
@@ -62,6 +61,7 @@ public class InputDataInput extends AppCompatActivity {
         db = new Database(this);
 
 
+        //Switch on what type of input
         Intent intent = getIntent();
         String Type = intent.getExtras().getString("Type");
         switch(Type){
@@ -89,35 +89,24 @@ public class InputDataInput extends AppCompatActivity {
 
     }
 
-    /*TODO
-        -Finsih up other type layouts with appropriate edittexts to grab info
-        -After that, set up SQLite for datastorage
-        -Make all default returns
-     */
 
-
-    /*TODO
-        Get Data and put into SQL database
-     */
-
+    //pre: The user has pressed the confirm button
+    //post: Inputs into database and generates a toast on success or failure
     public void EatConfirm(View v){
 
+        //Grab the editexts
         EditText BreakfastText = findViewById(R.id.EditBreakfast);
         String Breakfast = BreakfastText.getText().toString();
-        Log.d("Test Get Breakfast", ""+Breakfast);
         EditText LunchText = findViewById(R.id.EditLunch);
         String Lunch = LunchText.getText().toString();
-        Log.d("Test Get Lunch", ""+Lunch);
         EditText DinnerText = findViewById(R.id.EditDinner);
         String Dinner = DinnerText.getText().toString();
-        Log.d("Test Get Dinner", ""+Dinner);
 
+        //Parse strings to an int and sum
         int Total = Integer.parseInt("0"+Breakfast) + Integer.parseInt("0"+Lunch) + Integer.parseInt("0"+Dinner);
-        Log.d("Test Total", ""+Total);
 
-        Log.d("Before DB Insert", "");
+        //Insert into db
         long success = db.addEat(Total);
-        Log.d("After DB Insert", "");
 
         if(success != -1){
             Context context = getApplicationContext();
@@ -138,28 +127,30 @@ public class InputDataInput extends AppCompatActivity {
     }
 
 
-
+    //pre: User Pressed confirm
+    //post: inputs into database and generates toast based on success or failure
     public void SleepConfirm(View v){
+            //Grab picker times
             TimePicker WakePicker = findViewById(R.id.WakePicker);
             TimePicker SleepPicker = findViewById(R.id.SleepPicker);
-            int wakeHour, wakeMin, sleepHour, sleepMin, wakeAM, sleepAM;
-            Log.d("Test Time Hour", ""+WakePicker.getHour());
-            Log.d("Test Time Hour", ""+WakePicker.getMinute());
+            int wakeHour, wakeMin, sleepHour, sleepMin;
 
             wakeHour = WakePicker.getHour();
             sleepHour = SleepPicker.getHour();
             wakeMin = WakePicker.getMinute();
             sleepMin = SleepPicker.getMinute();
 
+            //Change time to % of hours for display later
             double adjustedWake = wakeHour + (wakeMin/60.0);
             double adjustedSleep = sleepHour + (sleepMin/60.0);
             double TotalSleep = adjustedSleep - adjustedWake;
+            //if negative, flip sign. Can't sleep negative times, even though it feels like that sometimes
             if(TotalSleep <0){
                 TotalSleep *= -1;
             }
 
+            //Insert into db
             long success = db.addSleep(TotalSleep);
-            Log.d("After DB Insert", "");
 
             if(success != -1){
                 Context context = getApplicationContext();
@@ -183,14 +174,19 @@ public class InputDataInput extends AppCompatActivity {
     }
 
 
+    //pre: user press exercise confirm
+    //post: write to db nd generate toast on success or failure
     public void ExerciseConfirm(View v){
+        //Grab edittexts
         EditText EditHours = findViewById(R.id.EditHours);
         EditText EditMins = findViewById(R.id.EditMins);
         String Hours = EditHours.getText().toString();
         String Mins = EditMins.getText().toString();
         int hours, mins;
+        //Parse into ints
         hours = Integer.parseInt("0"+Hours);
         mins = Integer.parseInt("0"+Mins);
+        //If user enters >24 or > 59 put down to actual maximums
         if(hours >24){
             hours = 24;
         }
@@ -198,13 +194,12 @@ public class InputDataInput extends AppCompatActivity {
             mins = 59;
         }
 
-
+        //Adjust to % of an hour for display
         double adjustedExcercise = hours + (mins/60.0);
 
 
-
+        //Insert into db
         long success = db.addExcercise(adjustedExcercise);
-        Log.d("After DB Insert", "");
 
         if(success != -1){
             Context context = getApplicationContext();
@@ -227,10 +222,10 @@ public class InputDataInput extends AppCompatActivity {
 
 
 
-    /*TODO
-       Get Data and put into SQL database
-    */
+    //pre: user selects confirm
+    //post: write to database and generate toast
     public void SocialConfirm(View v){
+        //Grab edittextss
         EditText EditHours = findViewById(R.id.EditHours);
         EditText EditMins = findViewById(R.id.EditMins);
         EditText EditNumPpl = findViewById(R.id.EditNumPpl);
@@ -238,9 +233,11 @@ public class InputDataInput extends AppCompatActivity {
         String Mins = EditMins.getText().toString();
         String NumPpl = EditNumPpl.getText().toString();
         int hours, mins, numPpl;
+        //Parse into ints
         hours = Integer.parseInt("0"+Hours);
         mins = Integer.parseInt("0"+Mins);
         numPpl = Integer.parseInt("0"+NumPpl);
+        //Round numbers so they make sense
         if(hours >24){
             hours = 24;
         }
@@ -248,11 +245,11 @@ public class InputDataInput extends AppCompatActivity {
             mins = 59;
         }
 
+        //Adjust for display
         double adjustedSocial = hours + (mins/60.0);
 
-        Log.d("Test before insert", "hours: "+hours+" mins: "+mins+" numPpl: "+numPpl);
+        //Insert into db
         long success = db.addSocial(adjustedSocial, numPpl);
-        Log.d("After DB Insert", "");
 
         if(success != -1){
             Context context = getApplicationContext();
@@ -276,18 +273,20 @@ public class InputDataInput extends AppCompatActivity {
     }
 
 
-
+    //pre: user pressed confirm
+    //post: write to db and generate toast
     public void FinanceConfirm(View v){
+        //grab editexts
         EditText EditMoney = findViewById(R.id.EditMoney);
         String Money = EditMoney.getText().toString();
         double money;
+        //Parse and round
         money = Double.parseDouble("0"+Money);
         money = Math.round(money * 100.0)/ 100.0;
-        Log.d("Test before insert", ""+money);
 
 
+        //insert into db
         long success = db.addFinance(money);
-        Log.d("After DB Insert", "");
 
         if(success != -1){
             Context context = getApplicationContext();
@@ -308,12 +307,14 @@ public class InputDataInput extends AppCompatActivity {
 
     }
 
-
+    //Pre: user presses a face
+    //post: write to db and generate toast
     public void MentalConfirm(View v){
 
-        Log.d("Which pic", ""+v.getTag());
+        //Get what face was pressed
         String FaceType = v.getTag().toString();
         long success = -1;
+        //Switch on what face and write to db
         switch (FaceType){
             case "Sad":
                 success = db.addMood(0);
