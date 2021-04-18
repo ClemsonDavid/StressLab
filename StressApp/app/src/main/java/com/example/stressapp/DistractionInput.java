@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Display;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -21,6 +22,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
 /*
@@ -213,6 +216,26 @@ public class DistractionInput extends AppCompatActivity {
                 break;
         }
 
+    }
+
+    //pre: The back button has been pressed
+    //post: Any ambient sounds will be paused
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (waves_media.isPlaying()) waves_media.pause();
+        if (wind_media.isPlaying()) wind_media.pause();
+        if (fire_media.isPlaying()) fire_media.pause();
+    }
+
+    //pre: The menu back button has been pressed
+    //post: Any ambient sounds will be paused
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (waves_media.isPlaying()) waves_media.pause();
+        if (wind_media.isPlaying()) wind_media.pause();
+        if (fire_media.isPlaying()) fire_media.pause();
+        return super.onOptionsItemSelected(item);
     }
 
     //pre: The math distraction has been selected

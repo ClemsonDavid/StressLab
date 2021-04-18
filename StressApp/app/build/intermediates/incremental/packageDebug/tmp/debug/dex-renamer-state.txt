@@ -1,4 +1,4 @@
-#Sun Apr 18 16:25:53 EDT 2021
+#Sun Apr 18 16:44:45 EDT 2021
 base.0=C\:\\Users\\julia\\GitHub\\BeautifulFinal\\StressLab\\StressApp\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 path.1=classes.dex
 renamed.1=classes2.dex

@@ -23,11 +23,11 @@ com/example/stressapp/InputDataInput.java
  com.example.stressapp.InputDataInput
 com/example/stressapp/MainActivity.java
  com.example.stressapp.MainActivity
+com/example/stressapp/InputDataTitle.java
+ com.example.stressapp.InputDataTitle
 com/example/stressapp/DistractionInput.java
  com.example.stressapp.DistractionInput
  com.example.stressapp.DistractionInput$1
  com.example.stressapp.DistractionInput$2
 com/example/stressapp/DistractionTitle.java
  com.example.stressapp.DistractionTitle
-com/example/stressapp/InputDataTitle.java
- com.example.stressapp.InputDataTitle
