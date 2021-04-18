@@ -30,15 +30,26 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+/*
+Team DJ
+This page handles the user's profile.
+A user can take a photo and set their chosen name
+If they click the save button, their profile photo
+and chosen name can be used for personalized greetings
+when they enter the app.
+ */
 
 public class ProfileTitle extends AppCompatActivity {
+    //REQUEST_IMAGE_CAPTURE and ASK_MULTIPLE_PERMISSION_REQUEST_CODE
+    //are used for obtaining permissions
+    //mPhotoImageView, image, and imageFilename are used for accessing
+    //and displaying the image
     private static final String PREFS = "prefs";
     private final int REQUEST_IMAGE_CAPTURE = 1;
     private final int ASK_MULTIPLE_PERMISSION_REQUEST_CODE = 103;
     ImageView mPhotoImageView;
     File image = null;
     String imageFilename = "";
-    //Boolean saved = false;
 
 
     @Override
@@ -63,6 +74,8 @@ public class ProfileTitle extends AppCompatActivity {
         setContentView(R.layout.activity_profiletitle);
         mPhotoImageView = findViewById(R.id.profilePhoto);
 
+        //If the user has already set up their profile, it displays
+        //their chosen name and profile photo
         SharedPreferences user = getSharedPreferences("user", MODE_PRIVATE);
         Boolean saved = user.getBoolean("saved", false);
         if (saved == true) {
@@ -72,8 +85,6 @@ public class ProfileTitle extends AppCompatActivity {
 
             String uriString = user.getString("uri", "");
             if (uriString != "") {
-                //Uri uri = Uri.parse(uriString);
-                //mPhotoImageView.setImageURI(uri);
 
                 Uri uri = Uri.parse(uriString);
                 Bitmap bitmap = null;
@@ -88,6 +99,7 @@ public class ProfileTitle extends AppCompatActivity {
             }
         }
 
+        //Requests permissions from the user to access the necessary data
         requestPermissions(new String[] {
                         Manifest.permission.CAMERA,
                         Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -96,6 +108,8 @@ public class ProfileTitle extends AppCompatActivity {
 
     }
 
+    //pre: the user has clicked to take a photo
+    //post: creates an image file and returns it
     private File createImageFile() throws IOException {
 
         // Create a unique filename
@@ -139,6 +153,8 @@ public class ProfileTitle extends AppCompatActivity {
         }
     }
 
+    //pre: an image and an angle to be rotated have been passed in
+    //post: a rotated image is returned
     public static Bitmap rotateImage(Bitmap source, float angle) {
         Matrix matrix = new Matrix();
         matrix.postRotate(angle);
@@ -146,10 +162,13 @@ public class ProfileTitle extends AppCompatActivity {
                 matrix, true);
     }
 
+    //pre: an image has been taken on the camera app
+    //post: the image is rotated and displayed
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
 
+            //The image is accessed
             Uri uri = Uri.fromFile(image);
             Bitmap bitmap = null;
             try {
@@ -158,15 +177,20 @@ public class ProfileTitle extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+            //The image is rotated
             Bitmap rotatedBitmap = rotateImage(bitmap, 90);
 
+            //The image is displayed
             mPhotoImageView.setImageBitmap(rotatedBitmap);
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    //pre: The user clicked the save button
+    //post: The user's profile picture and name are saved
     public void saveProfile(View view) {
         EditText name = findViewById(R.id.nameInsert);
+        //The shared preferences are updated
         SharedPreferences user = getSharedPreferences("user", MODE_PRIVATE);
         SharedPreferences.Editor edit = user.edit();
         edit.putString("name", name.getText().toString().trim());
@@ -176,8 +200,8 @@ public class ProfileTitle extends AppCompatActivity {
         edit.putString("uri", uri.toString());
         edit.commit();
 
+        //A toast is printed so the user knows their data has been saved
         Toast.makeText(this, R.string.success, Toast.LENGTH_SHORT).show();
 
-        //saved = true;
     }
 }

@@ -19,14 +19,18 @@ import java.io.IOException;
 /*
 Team DJ
 This is the main controller page for the app, where the user will decide where to go
-It hosts a appbar menu that directs to settings, graphs, and input
+It hosts a appbar menu that directs to settings, graphs, the profile, an additional button to go
+to the distractions page, and input
 The main button takes the user to the distractions page
+If the user has set up their profile, it will greet them by name and display their
+profile photo
  */
 
 
 
 public class MainActivity extends AppCompatActivity {
-    //PRES and Maxbright used to correctly build the theme on screen brightness or theme pref
+    //PREFS and Maxbright used to correctly build the theme on screen brightness or theme pref
+    //s used to greet the user if the profile is set up
     private static final String PREFS = "prefs";
     private static final double MaxBright = 255.0;
     StringBuilder s = new StringBuilder();
@@ -76,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView TitleImage = findViewById(R.id.TitleImage);
         TitleImage.setImageResource(ImageSrc);
 
+        //If the user profile is set up, greets the user by name
         SharedPreferences user = getSharedPreferences("user", MODE_PRIVATE);
         Boolean saved = user.getBoolean("saved", false);
         if (saved == true) {
@@ -124,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            //Switch statement for the menu options
             case R.id.Action_Settings:
                 //Settings Selected
                 Intent intent = new Intent(this, Settings.class);
@@ -143,11 +149,13 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.Action_Distraction:
+                //Distraction selected
                 intent = new Intent(this, DistractionTitle.class);
                 startActivity(intent);
                 return true;
 
             case R.id.Action_Profile:
+                //Profile selected
                 intent = new Intent(this, ProfileTitle.class);
                 startActivity(intent);
                 return true;

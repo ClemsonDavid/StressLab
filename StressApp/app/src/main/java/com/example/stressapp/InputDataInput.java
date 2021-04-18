@@ -19,7 +19,7 @@ This activity handles the input from the respective layout and activate the DB f
 
 
 public class InputDataInput extends AppCompatActivity {
-    //PRES and Maxbright used to correctly build the theme on screen brightness or theme pref
+    //PREFS and Maxbright used to correctly build the theme on screen brightness or theme pref
     private static final String PREFS = "prefs";
     private static final double MaxBright = 255.0;
     //Database object

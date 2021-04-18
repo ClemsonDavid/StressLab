@@ -13,6 +13,10 @@ import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+/*
+Team DJ
+This activity merely is a controller that directs the user to the selected distraction page
+ */
 
 public class DistractionTitle extends AppCompatActivity {
     private static final String PREFS = "prefs";
@@ -41,8 +45,11 @@ public class DistractionTitle extends AppCompatActivity {
 
     }
 
+    //pre: Option selected
+    //post: Starts DistractionInput Class and passes in what option was selected
     public void OptionSelect(View v){
         String TypeInput = "";
+        //Switch statement for which distraction is chosen
         Intent intent = new Intent(this, DistractionInput.class);
         switch(v.getId()){
             case R.id.BubblesButton:
